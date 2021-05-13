@@ -14,9 +14,11 @@ class LoginViewController: UIViewController {
 
     var curUserName: String = ""
     var curUserPassword: String = ""
+    
+    let student = User(userID: "Test", userPassword: "1234", bookBorrowedArray: [], bookInCartArray: [])
 
     // Retrieve user database to runtime
-    var userPassword: [String : String] = UserDefaults.standard.object(forKey: "Pass") as? [String : String] ?? [:]
+   // var userPassword: [String : String] = UserDefaults.standard.object(forKey: "Pass") as? [String : String] ?? [:]
     
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -37,11 +39,11 @@ class LoginViewController: UIViewController {
             
             // Next Page Determination
             
-            if userPassword["\(curUserName)"] == curUserPassword {
-                // Go to TabBarController VC if userExists
-                performSegue(withIdentifier: "DashboardController", sender: self)
+            if student.userPassword == curUserPassword {
+                // Go to Dashboard VC if userExists
+                performSegue(withIdentifier: "goToDashboard", sender: self)
             }
-            else if userPassword["\(curUserName)"] != curUserPassword {
+            else if student.userPassword != curUserPassword {
                 loginWarningLabel.text = "Username or Password is Invalid"
             }
         }
