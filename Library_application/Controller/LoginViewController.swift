@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     var curUserName: String = ""
     var curUserPassword: String = ""
     
-    let student = User(userID: "Test", userPassword: "1234", bookBorrowedArray: [], bookInCartArray: [])
+    let student = User(userID: "test", userPassword: "1234", bookBorrowedArray: [], bookInCartArray: [])
 
     // Retrieve user database to runtime
    // var userPassword: [String : String] = UserDefaults.standard.object(forKey: "Pass") as? [String : String] ?? [:]
