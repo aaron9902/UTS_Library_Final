@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     var curUserName: String = ""
     var curUserPassword: String = ""
@@ -53,5 +53,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    // This delegate method for UITextField
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // hide keyboard when player hits done button on keyboard
+        return true
     }
 }

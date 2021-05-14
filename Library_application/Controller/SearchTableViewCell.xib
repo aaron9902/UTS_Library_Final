@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NB International Regular Webfont.ttf">
+            <string>NBInternationalRegularWebfont</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" rowHeight="144" id="KGk-i7-Jjw" customClass="SearchTableViewCell" customModule="Library_application" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TZa-SY-h3j">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="144"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Bl-R0-CMD" userLabel="Book Cover">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="144"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kU4-W9-vuN" userLabel="Book Info Stack View">
+                                <rect key="frame" x="80" y="0.0" width="240" height="144"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdO-1n-4cm" userLabel="Book Title">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="36"/>
+                                        <fontDescription key="fontDescription" name="NBInternationalRegularWebfont" family="NB International" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author and Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnE-Yi-v0e">
+                                        <rect key="frame" x="0.0" y="36" width="240" height="36"/>
+                                        <fontDescription key="fontDescription" name="NBInternationalRegularWebfont" family="NB International" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cg-Lg-KKF">
+                                        <rect key="frame" x="0.0" y="72" width="240" height="36"/>
+                                        <fontDescription key="fontDescription" name="NBInternationalRegularWebfont" family="NB International" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTm-6Q-Jlc">
+                                        <rect key="frame" x="0.0" y="108" width="240" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Borrowed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7E-e6-ee8">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="36"/>
+                                                <fontDescription key="fontDescription" name="NBInternationalRegularWebfont" family="NB International" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y1N-QD-OVS">
+                                                <rect key="frame" x="75" y="0.0" width="165" height="36"/>
+                                                <fontDescription key="fontDescription" name="NBInternationalRegularWebfont" family="NB International" pointSize="17"/>
+                                                <state key="normal" title="Add to Cart"/>
+                                                <connections>
+                                                    <action selector="onClickOfAddToCart:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="16m-lf-Bgm"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="kU4-W9-vuN" firstAttribute="width" secondItem="1Bl-R0-CMD" secondAttribute="width" multiplier="3" id="UtK-Gs-erx"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="TZa-SY-h3j" secondAttribute="bottom" id="42F-Mz-YHR"/>
+                    <constraint firstItem="TZa-SY-h3j" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MDY-mK-VBl"/>
+                    <constraint firstItem="TZa-SY-h3j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="kGc-b2-Zud"/>
+                    <constraint firstAttribute="trailing" secondItem="TZa-SY-h3j" secondAttribute="trailing" id="lCT-Lq-w96"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnAddToCart" destination="Y1N-QD-OVS" id="HFE-TA-Niy"/>
+                <outlet property="imgBookCover" destination="1Bl-R0-CMD" id="8Rt-au-SNS"/>
+                <outlet property="lblBookAuthorAndYear" destination="xnE-Yi-v0e" id="fAV-o4-ajq"/>
+                <outlet property="lblBookStatus" destination="C7E-e6-ee8" id="wiU-F5-yBU"/>
+                <outlet property="lblBookTitle" destination="RdO-1n-4cm" id="gHH-g5-xf5"/>
+                <outlet property="lblSearchInfo" destination="2cg-Lg-KKF" id="Trc-Ht-W7b"/>
+            </connections>
+            <point key="canvasLocation" x="140.57971014492756" y="115.84821428571428"/>
+        </tableViewCell>
+    </objects>
+</document>
