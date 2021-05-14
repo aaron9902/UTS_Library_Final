@@ -14,9 +14,9 @@ struct BookShelf: Codable {
 struct Book: Codable {
     var id, title, author, categories: String
     var year, edition: String
-    var availablility: Availablility
+    var availablility: YesNo
     var bookDescription: String
-    var incart, recommended: Availablility
+    var incart, recommended: YesNo
     var volume: String?
 
     enum CodingKeys: String, CodingKey {
@@ -26,7 +26,7 @@ struct Book: Codable {
     }
 }
 
-enum Availablility: String, Codable {
+enum YesNo: String, Codable {
     case n = "N"
     case y = "Y"
 }

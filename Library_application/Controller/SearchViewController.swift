@@ -16,11 +16,13 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     @IBOutlet weak var searchBarSearchBooks: UISearchBar!
     var bookShelfManager = BookShelfManager()
     var bookShelf: BookShelf? = nil
-    
+    var tableViewBooksData: BookShelf? = nil
+    var searchText: String? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bookShelf = bookShelfManager.fetchBooks()
+        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchText)
         tableViewBooks.delegate = self
         tableViewBooks.dataSource = self
         let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)
@@ -29,41 +31,51 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        bookShelf = bookShelfManager.fetchBooks()
+        searchText = searchBarSearchBooks.text != nil && searchBarSearchBooks.text != "" ?  searchBarSearchBooks.text : nil
+        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchText)
+        tableViewBooks.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = 0
-        if let bookShelf = bookShelf {
-            count = bookShelf.books.count
-        }
+            if let tableViewBooksData = tableViewBooksData {
+                count = tableViewBooksData.books.count
+            }
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewBooks.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
-        cell.lblBookTitle.text = bookShelf?.books[indexPath.row].title
-        cell.lblBookAuthor.text = bookShelf?.books[indexPath.row].author
-        cell.lblBookEdition.text = bookShelf?.books[indexPath.row].edition
-        cell.lblPublishedYear.text = bookShelf?.books[indexPath.row].year
-        let imageName = "\(bookShelf?.books[indexPath.row].id ?? "737930").jpg"//"yourImage.png"
-        let image = UIImage(named: imageName)!
-        cell.imgViewBook.image = image
+            cell.lblBookTitle.text = tableViewBooksData?.books[indexPath.row].title
+            cell.lblBookAuthor.text = tableViewBooksData?.books[indexPath.row].author
+            cell.lblBookEdition.text = tableViewBooksData?.books[indexPath.row].edition
+            cell.lblPublishedYear.text = tableViewBooksData?.books[indexPath.row].year
+            let imageName = "\(tableViewBooksData?.books[indexPath.row].id ?? "737930").jpg"//"yourImage.png"
+            let image = UIImage(named: imageName)!
+            cell.imgViewBook.image = image
+        
         return cell
     }
     
-}
-
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                    self?.image = image
-                    }
+    
+    func getUpdatedTableViewData(bookShelf: BookShelf?, searchText: String?) -> BookShelf? {
+        var booksData: BookShelf? = nil
+        if var bookShelf = bookShelf {
+            if let searchText = searchText {
+                let books = bookShelf.books.filter { book in
+                    return book.title.lowercased().contains(searchText.lowercased())
                 }
+                bookShelf.books = books
+                booksData = bookShelf
+            } else {
+                let books = bookShelf.books.filter { book in
+                    return book.recommended == YesNo.y
+                }
+                bookShelf.books = books
+                booksData = bookShelf
             }
         }
+        return booksData
     }
+    
 }
