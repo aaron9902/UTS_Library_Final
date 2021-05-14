@@ -35,31 +35,20 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = 0
         if let bookShelf = bookShelf {
-            if let items = bookShelf.items {
-                count = items.count
-            }
+            count = bookShelf.books.count
         }
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewBooks.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
-        let coverImg = UIImageView()
-        if let bookShelf = bookShelf {
-            if let items = bookShelf.items {
-                if let volumeInfo = items[indexPath.row].volumeInfo {
-                    if let imageLinks = volumeInfo.imageLinks {
-                        if let tumbnail = imageLinks.thumbnail {
-                            let url = URL(string: tumbnail) ?? nil
-                            if url != nil {
-                                cell.imgBookCover.load(url: url!)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        cell.imgBookCover = coverImg
+        cell.lblBookTitle.text = bookShelf?.books[indexPath.row].title
+        cell.lblBookAuthor.text = bookShelf?.books[indexPath.row].author
+        cell.lblBookEdition.text = bookShelf?.books[indexPath.row].edition
+        cell.lblPublishedYear.text = bookShelf?.books[indexPath.row].year
+        let imageName = "\(bookShelf?.books[indexPath.row].id ?? "737930").jpg"//"yourImage.png"
+        let image = UIImage(named: imageName)!
+        cell.imgViewBook.image = image
         return cell
     }
     
