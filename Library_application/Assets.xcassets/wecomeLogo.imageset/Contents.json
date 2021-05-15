@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "wecomeLogo.jpg",
+      "filename" : "wecomeLogo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "wecomeLogo@2x.jpg",
+      "filename" : "wecomeLogo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "wecomeLogo@3x.jpg",
+      "filename" : "wecomeLogo@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

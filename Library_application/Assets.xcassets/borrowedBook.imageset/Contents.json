@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "borrowedBook.jpg",
+      "filename" : "borrowedBook.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "borrowedBook@2x.jpg",
+      "filename" : "borrowedBook@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "borrowedBook@3x.jpg",
+      "filename" : "borrowedBook@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

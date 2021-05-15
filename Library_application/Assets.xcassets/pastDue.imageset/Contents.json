@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "pastDue.jpg",
+      "filename" : "pastDue.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "pastDue@2x.jpg",
+      "filename" : "pastDue@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "pastDue@3x.jpg",
+      "filename" : "pastDue@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

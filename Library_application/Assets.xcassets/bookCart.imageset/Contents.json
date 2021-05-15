@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "bookCart.jpg",
+      "filename" : "bookCart.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "bookCart@2x.jpg",
+      "filename" : "bookCart@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "bookCart@3x.jpg",
+      "filename" : "bookCart@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
