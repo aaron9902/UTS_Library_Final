@@ -117,7 +117,7 @@
                 <outlet property="lblBookTitle" destination="bV6-BM-5J0" id="su0-Ve-5jD"/>
                 <outlet property="lblPublishedYear" destination="4TX-Y4-kFV" id="Yaa-KH-EZF"/>
             </connections>
-            <point key="canvasLocation" x="327.536231884058" y="55.580357142857139"/>
+            <point key="canvasLocation" x="37.681159420289859" y="18.080357142857142"/>
         </tableViewCell>
     </objects>
     <resources>
