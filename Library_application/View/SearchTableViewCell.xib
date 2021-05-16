@@ -111,6 +111,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gXb-fr-avh">
                                                         <rect key="frame" x="0.0" y="0.0" width="54" height="23.5"/>
                                                         <state key="normal" title="Preview"/>
+                                                        <connections>
+                                                            <action selector="viewPreview:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Hk5-oo-smD"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cN-ww-8gY">
                                                         <rect key="frame" x="67" y="0.0" width="30" height="23.5"/>
@@ -122,10 +125,16 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3NX-1R-HOd">
                                                         <rect key="frame" x="110" y="0.0" width="49" height="23.5"/>
                                                         <state key="normal" title="Borrow"/>
+                                                        <connections>
+                                                            <action selector="borrowBook:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kqX-jK-nRV"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7JN-Wc-KL6">
                                                         <rect key="frame" x="171.5" y="0.0" width="55" height="23.5"/>
                                                         <state key="normal" title="Remove"/>
+                                                        <connections>
+                                                            <action selector="removeFromCart:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="SLP-GQ-v6J"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -155,11 +164,18 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="btnAddToCart" destination="4cN-ww-8gY" id="tHE-TV-ZVu"/>
+                <outlet property="btnBorrow" destination="3NX-1R-HOd" id="j1l-vx-Jgb"/>
+                <outlet property="btnPreview" destination="gXb-fr-avh" id="oY3-Cr-rRt"/>
+                <outlet property="btnRemove" destination="7JN-Wc-KL6" id="cBp-wj-7By"/>
                 <outlet property="imgViewBook" destination="SAG-uS-sDT" id="hGQ-0h-X27"/>
                 <outlet property="lblBookAuthor" destination="3QP-9s-fKU" id="d6j-Hu-gDw"/>
                 <outlet property="lblBookEdition" destination="h6n-Ha-VAf" id="hfY-Qk-DkV"/>
                 <outlet property="lblBookTitle" destination="bV6-BM-5J0" id="su0-Ve-5jD"/>
+                <outlet property="lblDueDate" destination="Vhp-q7-BnM" id="t0m-t9-kJy"/>
+                <outlet property="lblISBN" destination="0Sq-BL-D8n" id="sVb-gv-VCd"/>
                 <outlet property="lblPublishedYear" destination="4TX-Y4-kFV" id="Yaa-KH-EZF"/>
+                <outlet property="lblStatus" destination="7Ou-Td-vV3" id="9Di-cN-GN1"/>
             </connections>
             <point key="canvasLocation" x="24.637681159420293" y="16.741071428571427"/>
         </tableViewCell>

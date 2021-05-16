@@ -12,10 +12,10 @@ class UserData: Codable {
 
     var userID : String
     var userPassword : String
-    var bookBorrowedArray: [String : String] // Bookname + Borrowed Date
+    var bookBorrowedArray: [String : Date] // Bookname + Borrowed Date
     var bookInCartArray: [String] // book names that student will borrow.
     
-    init(userID:String, userPassword: String, bookBorrowedArray: [String: String], bookInCartArray: [String]) {
+    init(userID:String, userPassword: String, bookBorrowedArray: [String: Date], bookInCartArray: [String]) {
         self.userID = userID
         self.userPassword = userPassword
         self.bookBorrowedArray = bookBorrowedArray

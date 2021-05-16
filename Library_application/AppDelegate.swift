@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         usersData = commonProperty.retrieveAndDecodeStoredUsersData()
         if usersData.isEmpty {
-            let user1 = UserData(userID: "13736626", userPassword: "1234", bookBorrowedArray: [String : String](), bookInCartArray: [String]())
-            let user2 = UserData(userID: "14085930", userPassword: "1234", bookBorrowedArray: [String : String](), bookInCartArray: [String]())
+            let user1 = UserData(userID: "13736626", userPassword: "1234", bookBorrowedArray: [String : Date](), bookInCartArray: [String]())
+            let user2 = UserData(userID: "14085930", userPassword: "1234", bookBorrowedArray: [String : Date](), bookInCartArray: [String]())
             usersData.append(contentsOf: [user1,user2])
             commonProperty.encodeAndStoreUsersData(usersData: usersData)
         }
