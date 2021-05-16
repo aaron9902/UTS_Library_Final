@@ -17,6 +17,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     var bookShelf: BookShelf? = nil
     var tableViewBooksData: BookShelf? = nil
     var searchText: String? = nil
+    var studentId = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()

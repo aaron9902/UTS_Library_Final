@@ -73,15 +73,15 @@ import UIKit
         
         if let title = title {
             alertTitle.text = title
-            alertTitle.font = UIFont(name: "BubblegumSans-Regular", size: 22)
-            alertTitle.textColor = UIColor(red: 8.0/255.0, green: 156.0/255.0, blue: 228.0/255.0, alpha: 1.0)
+            alertTitle.font = UIFont.systemFont(ofSize: 20)
+            alertTitle.textColor = appColor
         }else{
             alertTitle.isHidden = true
         }
         
         if let description = description {
             alertDescription.text = description
-            alertDescription.font = UIFont(name: "BubblegumSans-Regular", size: 20)
+            alertDescription.font = UIFont.systemFont(ofSize: 17)
             //alertDescription.adjustsFontSizeToFitWidth = true
             //alertDescription.lineBreakMode = .byClipping
         }else{

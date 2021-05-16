@@ -17,7 +17,23 @@ class LoginViewData: CommonProperty {
     
     let invalidTitle = "Username or Password is Invalid"
     let invalidDescription = "Please enter your valid username and password."
+        
+    func loginViewcommonDefaultSetting(username: UITextField, password: UITextField, stackViewLoginContainer: UIStackView, btnLogin: UIButton) {
+        setDefaultCustomTextFieldSettings(username)
+        setDefaultCustomTextFieldSettings(password)
+        setDefaultCustomStackViewSettings(stackViewLoginContainer)
+        setDefaultCustomButtonSettings(btnLogin)
+    }
+}
+
+class SearchViewData: CommonProperty {
     
+    let emptyTitle = "Username or Password is Empty"
+    let emptyDescription = "Please enter your username and password."
+    
+    let invalidTitle = "Username or Password is Invalid"
+    let invalidDescription = "Please enter your valid username and password."
+        
     func loginViewcommonDefaultSetting(username: UITextField, password: UITextField, stackViewLoginContainer: UIStackView, btnLogin: UIButton) {
         setDefaultCustomTextFieldSettings(username)
         setDefaultCustomTextFieldSettings(password)
