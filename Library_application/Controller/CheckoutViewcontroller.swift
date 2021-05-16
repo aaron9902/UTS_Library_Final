@@ -26,6 +26,7 @@ class CheckoutViewController: UIViewController, addToCartBtnDelegate, UITableVie
         tableViewBooks.register(nib, forCellReuseIdentifier: "SearchTableViewCell")
     }
     
+    
     @IBAction func onClickBooksBorrowed(_ sender: Any) {
           tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchText)
         
@@ -63,6 +64,7 @@ class CheckoutViewController: UIViewController, addToCartBtnDelegate, UITableVie
     {
         tableViewBooks.reloadData()
     }
+    
     func addToCartTapped(at index: IndexPath) {
         let clickedCell = tableViewBooks.cellForRow(at: index) as! SearchTableViewCell
         let selectedBookID:String? = clickedCell.lblPublishedYear.text
@@ -82,8 +84,24 @@ class CheckoutViewController: UIViewController, addToCartBtnDelegate, UITableVie
             usersData.append(user)
             commonProperty.encodeAndStoreUsersData(usersData: usersData)
         }
-        removeCell()
+        openAlertDialog()
     }
+
+    fileprivate func openAlertDialog() {
+        
+        // This class creates the alert view
+        let alert = PMAlertController(title: "Book is added to your Cart", description: "Visit checkout tab to continue borrowing", image: UIImage(named: "bookCart.png"), style: .alert)
+        
+        //Add action button to alert view
+        alert.addAction(PMAlertAction(title: "OK", style: .default, action: { () in
+        
+        alert.dismiss(animated: true, completion: nil)
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false                            // The table view should not be editable by the user.
@@ -108,6 +126,5 @@ class CheckoutViewController: UIViewController, addToCartBtnDelegate, UITableVie
         }
         return booksData
     }
-        
 }
 

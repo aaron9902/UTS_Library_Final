@@ -391,13 +391,17 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YK7-iB-CPg" userLabel="cartSquare">
                                                                 <rect key="frame" x="0.0" y="0.0" width="202" height="124.5"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookCart" translatesAutoresizingMaskIntoConstraints="NO" id="mO7-Ne-83F">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqg-ul-goT">
                                                                         <rect key="frame" x="61" y="0.0" width="80" height="80"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="80" id="7S4-2t-HBa"/>
-                                                                            <constraint firstAttribute="width" constant="80" id="Csz-LO-VSI"/>
+                                                                            <constraint firstAttribute="height" constant="80" id="2or-nh-vuj"/>
+                                                                            <constraint firstAttribute="width" constant="80" id="U0f-Bc-HxD"/>
                                                                         </constraints>
-                                                                    </imageView>
+                                                                        <state key="normal" title="Button" image="bookCart"/>
+                                                                        <connections>
+                                                                            <segue destination="8hB-xu-JZU" kind="show" id="KMb-Cz-NWi"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Books in Cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTd-C3-ZQQ">
                                                                         <rect key="frame" x="50" y="80" width="102" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -415,13 +419,14 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="enS-Uq-yko" userLabel="dueSquare">
                                                                 <rect key="frame" x="212" y="0.0" width="202" height="124.5"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="pastDue" translatesAutoresizingMaskIntoConstraints="NO" id="NyI-so-1sq">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zu3-xf-a7Z">
                                                                         <rect key="frame" x="61" y="0.0" width="80" height="80"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="80" id="rOc-Rc-cAT"/>
-                                                                            <constraint firstAttribute="height" constant="80" id="w1H-ik-EjF"/>
+                                                                            <constraint firstAttribute="height" constant="80" id="hkT-Cf-sVw"/>
+                                                                            <constraint firstAttribute="width" constant="80" id="hrh-4O-udx"/>
                                                                         </constraints>
-                                                                    </imageView>
+                                                                        <state key="normal" title="Button" image="pastDue"/>
+                                                                    </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overdue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNZ-WZ-vnW">
                                                                         <rect key="frame" x="68.5" y="80" width="65" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -700,10 +705,10 @@
             </objects>
             <point key="canvasLocation" x="86.956521739130437" y="115.84821428571428"/>
         </scene>
-        <!--Checkout-->
+        <!--Checkout View Controller-->
         <scene sceneID="byl-TB-7tV">
             <objects>
-                <viewController storyboardIdentifier="CheckoutViewController" title="Checkout" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8hB-xu-JZU" customClass="CheckoutViewController" customModule="Library_application" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckoutViewController" title="Checkout" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8hB-xu-JZU" userLabel="Checkout View Controller" customClass="CheckoutViewController" customModule="Library_application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VQt-iK-MCb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -834,11 +839,14 @@
             <point key="canvasLocation" x="978" y="849"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="KMb-Cz-NWi"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="UTS_Logo" width="959" height="512"/>
-        <image name="bookCart" width="166.5" height="148"/>
+        <image name="bookCart" width="211" height="131"/>
         <image name="borrowedBook" width="166.5" height="166.5"/>
-        <image name="pastDue" width="184" height="150.5"/>
+        <image name="pastDue" width="166.5" height="166.5"/>
         <image name="wecomeLogo" width="165.5" height="167"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
