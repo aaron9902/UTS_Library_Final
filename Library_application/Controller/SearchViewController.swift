@@ -10,30 +10,61 @@ import UIKit
 
 class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
+    let searchViewData = SearchViewData()
+    
     @IBOutlet weak var tableViewBooks: UITableView!
     @IBOutlet weak var searchBarSearchBooks: UISearchBar!
+    
+    @IBOutlet weak var lblResult: UILabel!
+    
     var bookShelfManager = BookShelfManager()
     var bookShelf: BookShelf? = nil
     var tableViewBooksData: BookShelf? = nil
-    var searchText: String? = nil
+    var searchTextInput: String? = nil
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchViewData.searchViewcommonDefaultSetting(tableViewBooks: tableViewBooks, searchBarSearchBooks: searchBarSearchBooks, lblResult: lblResult)
+        
+        lblResult.text = "Recommended Books"
         bookShelf = bookShelfManager.fetchBooks()
-        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchText)
+        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchTextInput)
         tableViewBooks.delegate = self
         tableViewBooks.dataSource = self
         let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)
         tableViewBooks.register(nib, forCellReuseIdentifier: "SearchTableViewCell")
+        
+        searchBarSearchBooks.searchTextField.clearButton?.addTarget(self, action: #selector(onClickOfClearBtn), for: .touchUpInside)
+    }
+    
+    @objc func onClickOfClearBtn(_ sender: UIButton) {
+        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchTextInput)
+        tableViewBooks.reloadData()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        searchText = searchBarSearchBooks.text != nil && searchBarSearchBooks.text != "" ?  searchBarSearchBooks.text : nil
-        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchText)
-        tableViewBooks.reloadData()
+        
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+
+        let inputString = searchText.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+
+        if inputString.count > 0
+        {
+            searchTextInput = searchBarSearchBooks.text != nil && searchBarSearchBooks.text != "" ?  searchBarSearchBooks.text : nil
+            tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchText)
+            
+        }
+        else
+        {
+            tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchTextInput)
+        }
+        tableViewBooks.reloadData()
+    }
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = 0
             if let tableViewBooksData = tableViewBooksData {
@@ -76,4 +107,10 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UITableViewDe
         return booksData
     }
     
+}
+
+extension UISearchTextField {
+   var clearButton: UIButton? {
+      return value(forKey: "_clearButton") as? UIButton
+   }
 }

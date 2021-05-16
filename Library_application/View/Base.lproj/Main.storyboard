@@ -580,7 +580,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fai-4z-ZXc" userLabel="Searchbox and Books View">
                                         <rect key="frame" x="0.0" y="88" width="414" height="730"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HiU-eA-5MR" userLabel="Searchbox and Books Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HiU-eA-5MR" userLabel="Searchbox and Books Stack View">
                                                 <rect key="frame" x="8" y="8" width="398" height="714"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHg-mI-a7M" userLabel="Searchbox View">
@@ -595,28 +595,36 @@
                                                                 </connections>
                                                             </searchBar>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="65" id="0RT-6O-weo"/>
-                                                        </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mcj-Qw-8Hy" userLabel="Book Coll View">
-                                                        <rect key="frame" x="0.0" y="65" width="398" height="649"/>
+                                                        <rect key="frame" x="0.0" y="75" width="398" height="639"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ekP-zO-KSB">
-                                                                <rect key="frame" x="0.0" y="0.0" width="398" height="649"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="398" height="639"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommendations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyU-VX-zSd">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="398" height="32"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommendations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyU-VX-zSd" customClass="PaddingLabel" customModule="Library_application" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="398" height="33.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="32" id="RBf-ph-DOC"/>
-                                                                        </constraints>
                                                                         <fontDescription key="fontDescription" name="NBInternationalRegularWebfont" family="NB International" pointSize="20"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                                                                <real key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                                                                <real key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
+                                                                                <real key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                                                                <real key="value" value="5"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N4M-h5-AQm">
-                                                                        <rect key="frame" x="0.0" y="32" width="398" height="617"/>
+                                                                        <rect key="frame" x="0.0" y="33.5" width="398" height="605.5"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     </tableView>
                                                                 </subviews>
@@ -631,9 +639,8 @@
                                                     </view>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="mcj-Qw-8Hy" firstAttribute="top" secondItem="gHg-mI-a7M" secondAttribute="bottom" id="DyM-qs-pib"/>
                                                     <constraint firstItem="mcj-Qw-8Hy" firstAttribute="trailing" secondItem="HiU-eA-5MR" secondAttribute="trailingMargin" id="FP7-MG-i1k"/>
-                                                    <constraint firstItem="mcj-Qw-8Hy" firstAttribute="top" secondItem="gHg-mI-a7M" secondAttribute="bottom" id="WS3-u0-WA9"/>
+                                                    <constraint firstItem="mcj-Qw-8Hy" firstAttribute="top" secondItem="HiU-eA-5MR" secondAttribute="top" constant="75" id="cM5-n5-0LY"/>
                                                     <constraint firstItem="gHg-mI-a7M" firstAttribute="trailing" secondItem="HiU-eA-5MR" secondAttribute="trailingMargin" id="hIO-3p-S9F"/>
                                                     <constraint firstItem="gHg-mI-a7M" firstAttribute="leading" secondItem="HiU-eA-5MR" secondAttribute="leadingMargin" id="s6y-gL-cId"/>
                                                     <constraint firstItem="mcj-Qw-8Hy" firstAttribute="bottom" secondItem="HiU-eA-5MR" secondAttribute="bottomMargin" id="vJw-pv-3mb"/>
@@ -664,6 +671,7 @@
                     <navigationItem key="navigationItem" id="LMT-bp-z6N"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="lblResult" destination="vyU-VX-zSd" id="Eiz-fP-9Vz"/>
                         <outlet property="searchBarSearchBooks" destination="izJ-Ut-5Oa" id="bZQ-MU-cRl"/>
                         <outlet property="tableViewBooks" destination="N4M-h5-AQm" id="eJD-9q-whk"/>
                     </connections>
@@ -839,6 +847,11 @@
             <point key="canvasLocation" x="978" y="849"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="vyU-VX-zSd">
+            <size key="intrinsicContentSize" width="179" height="33.5"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="KMb-Cz-NWi"/>
     </inferredMetricsTieBreakers>

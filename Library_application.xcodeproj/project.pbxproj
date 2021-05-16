@@ -13,6 +13,7 @@
 		474F906C264E9410006E0EFE /* books.json in Resources */ = {isa = PBXBuildFile; fileRef = 474F906B264E9410006E0EFE /* books.json */; };
 		474F9071264E9F76006E0EFE /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474F9070264E9F76006E0EFE /* SearchTableViewCell.swift */; };
 		47A8DCC7264DA73F0014A08D /* BookShelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8DCC6264DA73F0014A08D /* BookShelf.swift */; };
+		47D5043726515988008E98CD /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D5043626515988008E98CD /* PaddingLabel.swift */; };
 		47E626D72650D559004F9C6C /* CommonProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E626D62650D559004F9C6C /* CommonProperty.swift */; };
 		47E626DB2650D5AC004F9C6C /* InAppAllViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E626DA2650D5AC004F9C6C /* InAppAllViewData.swift */; };
 		47E626E32650DC18004F9C6C /* PMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E626E02650DC18004F9C6C /* PMAlertAction.swift */; };
@@ -39,6 +40,7 @@
 		474F906B264E9410006E0EFE /* books.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = books.json; sourceTree = "<group>"; };
 		474F9070264E9F76006E0EFE /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		47A8DCC6264DA73F0014A08D /* BookShelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelf.swift; sourceTree = "<group>"; };
+		47D5043626515988008E98CD /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		47E626D62650D559004F9C6C /* CommonProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonProperty.swift; sourceTree = "<group>"; };
 		47E626DA2650D5AC004F9C6C /* InAppAllViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppAllViewData.swift; sourceTree = "<group>"; };
 		47E626E02650DC18004F9C6C /* PMAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMAlertAction.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				47E626D62650D559004F9C6C /* CommonProperty.swift */,
+				47D5043626515988008E98CD /* PaddingLabel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				26CA49C7264BF998006772F1 /* EnquiryConfirmationViewController.swift in Sources */,
 				26DDC7A8264BE80F00180980 /* EnquiryViewController.swift in Sources */,
 				47A8DCC7264DA73F0014A08D /* BookShelf.swift in Sources */,
+				47D5043726515988008E98CD /* PaddingLabel.swift in Sources */,
 				932139D9264A9FBA007F32B6 /* SearchViewController.swift in Sources */,
 				93AD95632647D4E30069571D /* LoginViewController.swift in Sources */,
 				93AD955F2647D4E30069571D /* AppDelegate.swift in Sources */,

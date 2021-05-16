@@ -21,6 +21,23 @@ class CommonProperty {
         uiTextField.autocorrectionType = .no
     }
     
+    func setDefaultCustomLabelSettings(_ uiLabel: UILabel) {
+        uiLabel.layer.cornerRadius = 5
+        uiLabel.layer.masksToBounds = true
+    }
+    func setDefaultCustomTableViewSettings(_ uiTableView: UITableView){
+        uiTableView.layer.cornerRadius = 5
+    }
+    
+    func setDefaultCustomSearchBarSettings(_ uiSearchBar: UISearchBar) {
+        uiSearchBar.searchTextField.textColor = UIColor.black
+        uiSearchBar.searchTextField.backgroundColor = .clear
+        uiSearchBar.layer.cornerRadius = 5
+        uiSearchBar.clipsToBounds = true
+        uiSearchBar.autocorrectionType = .no
+        uiSearchBar.searchTextField.clearButtonMode = .never
+        uiSearchBar.returnKeyType = .done
+    }
     func setDefaultCustomStackViewSettings(_ uiStackView: UIStackView){
         uiStackView.layer.cornerRadius = 5
     }

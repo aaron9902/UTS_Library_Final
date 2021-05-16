@@ -34,10 +34,9 @@ class SearchViewData: CommonProperty {
     let invalidTitle = "Username or Password is Invalid"
     let invalidDescription = "Please enter your valid username and password."
         
-    func loginViewcommonDefaultSetting(username: UITextField, password: UITextField, stackViewLoginContainer: UIStackView, btnLogin: UIButton) {
-        setDefaultCustomTextFieldSettings(username)
-        setDefaultCustomTextFieldSettings(password)
-        setDefaultCustomStackViewSettings(stackViewLoginContainer)
-        setDefaultCustomButtonSettings(btnLogin)
+    func searchViewcommonDefaultSetting(tableViewBooks: UITableView, searchBarSearchBooks: UISearchBar, lblResult: UILabel) {
+        setDefaultCustomTableViewSettings(tableViewBooks)
+        setDefaultCustomSearchBarSettings(searchBarSearchBooks)
+        setDefaultCustomLabelSettings(lblResult)
     }
 }
