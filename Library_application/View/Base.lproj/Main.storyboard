@@ -324,29 +324,29 @@
                                         <rect key="frame" x="0.0" y="88" width="414" height="764"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MzN-2j-Htt" userLabel="stackDashboard">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="922"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="781"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="y9c-ea-juw" userLabel="rowOne">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="121"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="124.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vGL-cd-EJD" userLabel="welcomeSquare">
-                                                                <rect key="frame" x="0.0" y="0.0" width="202" height="121"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="131.5" height="124.5"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wecomeLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ViK-fT-UeC">
-                                                                        <rect key="frame" x="61" y="0.0" width="80" height="80"/>
+                                                                        <rect key="frame" x="25.5" y="0.0" width="80" height="80"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="80" id="QLk-RK-05G"/>
                                                                             <constraint firstAttribute="width" constant="80" id="wUv-cD-8Q3"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Welcome to dashboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bJ-uT-26b" userLabel="Welcome User">
-                                                                        <rect key="frame" x="17.5" y="80" width="167.5" height="21.5"/>
+                                                                        <rect key="frame" x="0.0" y="80" width="131.5" height="25"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14085930" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXm-AQ-3eT" userLabel="Welcome User">
-                                                                        <rect key="frame" x="63" y="101.5" width="76" height="19.5"/>
+                                                                        <rect key="frame" x="27.5" y="105" width="76" height="19.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -355,10 +355,10 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WzU-wa-m0X" userLabel="borrowSquare">
-                                                                <rect key="frame" x="212" y="0.0" width="202" height="121"/>
+                                                                <rect key="frame" x="141.5" y="0.0" width="131" height="124.5"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MY9-Np-pFv" userLabel="btnBorrowed">
-                                                                        <rect key="frame" x="61" y="0.0" width="80" height="80"/>
+                                                                        <rect key="frame" x="25.5" y="0.0" width="80" height="80"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="80" id="N4l-eY-fde"/>
                                                                             <constraint firstAttribute="height" constant="80" id="y51-Y9-z8k"/>
@@ -368,14 +368,14 @@
                                                                             <action selector="onClickBooksBorrowed:" destination="KR1-Sd-VDR" eventType="touchUpInside" id="bHG-mw-BkB"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Books borrowed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BT3-gw-zqa">
-                                                                        <rect key="frame" x="39" y="80" width="124" height="20.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Books borrowed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BT3-gw-zqa">
+                                                                        <rect key="frame" x="3.5" y="80" width="124" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4F-Yo-YGh" userLabel="borrowCount">
-                                                                        <rect key="frame" x="92" y="100.5" width="18" height="20.5"/>
+                                                                        <rect key="frame" x="56.5" y="100.5" width="18" height="24"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" systemColor="systemGreenColor"/>
                                                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -383,44 +383,11 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="linkColor"/>
                                                             </stackView>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z3R-yZ-aRL" userLabel="rowTwo">
-                                                        <rect key="frame" x="0.0" y="141" width="414" height="124.5"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YK7-iB-CPg" userLabel="cartSquare">
-                                                                <rect key="frame" x="0.0" y="0.0" width="202" height="124.5"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bqg-ul-goT">
-                                                                        <rect key="frame" x="61" y="0.0" width="80" height="80"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="80" id="2or-nh-vuj"/>
-                                                                            <constraint firstAttribute="width" constant="80" id="U0f-Bc-HxD"/>
-                                                                        </constraints>
-                                                                        <state key="normal" title="Button" image="bookCart"/>
-                                                                        <connections>
-                                                                            <segue destination="8hB-xu-JZU" kind="show" id="KMb-Cz-NWi"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Books in Cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTd-C3-ZQQ">
-                                                                        <rect key="frame" x="50" y="80" width="102" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faQ-Gk-XZB" userLabel="cartCount">
-                                                                        <rect key="frame" x="95.5" y="100.5" width="11" height="24"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                        <color key="textColor" systemColor="systemYellowColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                            </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="enS-Uq-yko" userLabel="dueSquare">
-                                                                <rect key="frame" x="212" y="0.0" width="202" height="124.5"/>
+                                                                <rect key="frame" x="282.5" y="0.0" width="131.5" height="124.5"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zu3-xf-a7Z">
-                                                                        <rect key="frame" x="61" y="0.0" width="80" height="80"/>
+                                                                        <rect key="frame" x="26" y="0.0" width="80" height="80"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="80" id="hkT-Cf-sVw"/>
                                                                             <constraint firstAttribute="width" constant="80" id="hrh-4O-udx"/>
@@ -428,13 +395,13 @@
                                                                         <state key="normal" title="Button" image="pastDue"/>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overdue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNZ-WZ-vnW">
-                                                                        <rect key="frame" x="68.5" y="80" width="65" height="20.5"/>
+                                                                        <rect key="frame" x="33.5" y="80" width="65" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecy-hl-IpM" userLabel="dueCount">
-                                                                        <rect key="frame" x="95.5" y="100.5" width="11.5" height="24"/>
+                                                                        <rect key="frame" x="60" y="100.5" width="11.5" height="24"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                         <color key="textColor" systemColor="systemPinkColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -444,7 +411,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Ge-ZV-MLg" userLabel="stackTableView">
-                                                        <rect key="frame" x="0.0" y="285.5" width="414" height="636.5"/>
+                                                        <rect key="frame" x="0.0" y="144.5" width="414" height="636.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of Borrowed Books" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFe-8l-FHB" userLabel="tableHeading">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="26.5"/>
@@ -852,12 +819,8 @@
             <size key="intrinsicContentSize" width="179" height="33.5"/>
         </designable>
     </designables>
-    <inferredMetricsTieBreakers>
-        <segue reference="KMb-Cz-NWi"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="UTS_Logo" width="959" height="512"/>
-        <image name="bookCart" width="211" height="131"/>
         <image name="borrowedBook" width="166.5" height="166.5"/>
         <image name="pastDue" width="166.5" height="166.5"/>
         <image name="wecomeLogo" width="165.5" height="167"/>
@@ -881,9 +844,6 @@
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

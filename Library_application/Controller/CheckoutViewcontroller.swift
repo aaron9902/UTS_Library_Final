@@ -10,6 +10,7 @@ import UIKit
 
 class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITableViewDelegate, UITableViewDataSource  {
     
+    
     func addToCartTapped(at index: IndexPath) {
     //test
     }
@@ -23,6 +24,8 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
     var bookShelf: BookShelf? = nil
     var tableViewBooksData: BookShelf? = nil
     var searchText: String? = nil
+    var indexForCell = Int()
+    let username = "14085930"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +48,10 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = 0
-        return 5;
+            if let tableViewBooksData = tableViewBooksData {
+                count = tableViewBooksData.books.count
+            }
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,29 +64,10 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
             cell.btnAddToCart.isHidden = true
             let imageName = "\(tableViewBooksData?.books[indexPath.row].id ?? "737930").jpg"//"yourImage.png"
             let image = UIImage(named: imageName)!
-            let selectedBookId = cell.lblISBN.text
-            let commonProperty = CommonProperty()
-            usersData = commonProperty.retrieveAndDecodeStoredUsersData()
-            let username = "14085930"
-            if let user = usersData.first(where: {$0.userID == username})
-            {
-            let bookBorrowed = user.bookBorrowedArray[selectedBookId!] != nil
-            let bookInCart = user.bookInCartArray.contains(selectedBookId!)
-            if bookBorrowed
-            {
-                cell.btnBorrow.isEnabled = false
-                cell.lblStatus.text = "Borrowed"
-                cell.lblStatus.textColor = UIColor.systemGreen
-                cell.btnRemove.setTitle("Return", for: .normal)
-            }
-            else if bookInCart
-            {
-                cell.btnBorrow.isEnabled = true
-                cell.lblStatus.text = "In Cart"
-                cell.lblStatus.textColor = UIColor.systemYellow
-                cell.btnRemove.setTitle("Remove", for: .normal)
-            }
-            }
+            cell.btnBorrow.isEnabled = true
+            cell.lblStatus.text = "In Cart"
+            cell.lblStatus.textColor = UIColor.systemYellow
+            cell.lblDueDate.text = ""
             cell.imgViewBook.image = image
             cell.delegate = self
             cell.indexPath = indexPath
@@ -93,7 +80,6 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
         let selectedBookId = clickedCell.lblISBN.text
         let commonProperty = CommonProperty()
         usersData = commonProperty.retrieveAndDecodeStoredUsersData()
-        let username = "14085930"
         if let user = usersData.first(where: {$0.userID == username})
             {
             let usersDataIndex = usersData.firstIndex(where: {$0.userID == username})
@@ -121,6 +107,9 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
                 }
             }
         }
+        // Delete the row from the data source
+        let intIndex = index.row
+        tableViewBooksData?.books.remove(at: intIndex)
         tableViewBooks.deleteRows(at: [index], with: .fade)
         tableViewBooks.reloadData()
         }
@@ -131,7 +120,6 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
         let selectedBookId = clickedCell.lblISBN.text
         let commonProperty = CommonProperty()
         usersData = commonProperty.retrieveAndDecodeStoredUsersData()
-        let username = "14085930"
         if let user = usersData.first(where: {$0.userID == username})
         {
             let usersDataIndex = usersData.firstIndex(where: {$0.userID == username})
@@ -146,6 +134,9 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
                 commonProperty.encodeAndStoreUsersData(usersData: usersData)
             }
         }
+        let intIndex = index.row
+        tableViewBooksData?.books.remove(at: intIndex)
+        tableViewBooks.deleteRows(at: [index], with: .fade)
         tableViewBooks.reloadData()
         openAlertDialog()
     }
@@ -184,22 +175,21 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
         return false                            // The table view should not be editable by the user.
     }
     
-    func getUpdatedTableViewData(bookShelf: BookShelf?, searchText: String?) -> BookShelf? {
+    func getUpdatedTableViewData(bookShelf: BookShelf?, searchText: String?) -> BookShelf?
+    {
         var booksData: BookShelf? = nil
-        if var bookShelf = bookShelf {
-            if let searchText = searchText {
-                let books = bookShelf.books.filter { book in
-                    return book.title.lowercased().contains(searchText.lowercased())
-                }
-                bookShelf.books = books
-                booksData = bookShelf
-            } else {
-                let books = bookShelf.books.filter { book in
-                    return book.recommended == YesNo.y
-                }
-                bookShelf.books = books
-                booksData = bookShelf
+        let commonProperty = CommonProperty()
+        usersData = commonProperty.retrieveAndDecodeStoredUsersData()
+        if let user = usersData.first(where: {$0.userID == username})
+            {
+            if var bookShelf = bookShelf {
+            let books = bookShelf.books.filter { book in
+               return user.bookInCartArray.contains(book.id)
             }
+            bookShelf.books = books
+            booksData = bookShelf
+            }
+            
         }
         return booksData
     }
