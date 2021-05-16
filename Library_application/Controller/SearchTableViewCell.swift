@@ -7,20 +7,24 @@
 
 import UIKit
 
+protocol addToCartBtnDelegate{
+    func addToCartTapped(at index:IndexPath)
+}
+
 class SearchTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imgViewBook: UIImageView!
-    
     @IBOutlet weak var lblBookTitle: UILabel!
-    
-    
     @IBOutlet weak var lblBookAuthor: UILabel!
-    
-    
     @IBOutlet weak var lblBookEdition: UILabel!
-    
-    
     @IBOutlet weak var lblPublishedYear: UILabel!
+    var delegate:addToCartBtnDelegate!
+    @IBOutlet weak var btnAddToCart: UIButton!
+    var indexPath:IndexPath!
+    
+    @IBAction func addToCarts(_ sender: UIButton) {
+        self.delegate?.addToCartTapped(at: indexPath)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,5 +36,7 @@ class SearchTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
 
 }

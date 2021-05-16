@@ -1,16 +1,14 @@
 //
-//  File.swift
+//  CheckoutViewcontroller.swift
 //  Library_application
 //
-//  Created by Aaron Hyungju Lee on 11/5/21.
+//  Created by user190351 on 5/16/21.
 //
 
 import Foundation
-
-
 import UIKit
 
-class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+class CheckoutViewController: UIViewController, addToCartBtnDelegate, UITableViewDelegate, UITableViewDataSource  {
     
     @IBOutlet weak var tableViewBooks: UITableView!
     var bookShelfManager = BookShelfManager()
@@ -52,12 +50,39 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.lblBookTitle.text = tableViewBooksData?.books[indexPath.row].title
             cell.lblBookAuthor.text = tableViewBooksData?.books[indexPath.row].author
             cell.lblBookEdition.text = tableViewBooksData?.books[indexPath.row].edition
-            cell.lblPublishedYear.text = tableViewBooksData?.books[indexPath.row].year
+            cell.lblPublishedYear.text = tableViewBooksData?.books[indexPath.row].id
             let imageName = "\(tableViewBooksData?.books[indexPath.row].id ?? "737930").jpg"//"yourImage.png"
             let image = UIImage(named: imageName)!
             cell.imgViewBook.image = image
-        
+            cell.delegate = self
+            cell.indexPath = indexPath
         return cell
+    }
+    
+    func removeCell()
+    {
+        tableViewBooks.reloadData()
+    }
+    func addToCartTapped(at index: IndexPath) {
+        let clickedCell = tableViewBooks.cellForRow(at: index) as! SearchTableViewCell
+        let selectedBookID:String? = clickedCell.lblPublishedYear.text
+        let commonProperty = CommonProperty()
+        usersData = commonProperty.retrieveAndDecodeStoredUsersData()
+        let username = "14085930"
+        if let user = usersData.first(where: {$0.userID == username})
+        {
+            let usersDataIndex = usersData.firstIndex(where: {$0.userID == username})
+            var currentCart: [String]  = user.bookInCartArray
+            if !(currentCart.contains(selectedBookID!))
+            {
+                currentCart.append(selectedBookID!)
+                user.bookInCartArray = currentCart
+            }
+            usersData.remove(at: usersDataIndex!)
+            usersData.append(user)
+            commonProperty.encodeAndStoreUsersData(usersData: usersData)
+        }
+        removeCell()
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -83,4 +108,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         return booksData
     }
+        
 }
+

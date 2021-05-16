@@ -200,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="44T-7v-G2Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1997" y="814"/>
+            <point key="canvasLocation" x="2017" y="848"/>
         </scene>
         <!--Enquiry Confirmation View Controller-->
         <scene sceneID="a35-jq-Rwt">
@@ -251,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YW-Dp-sNR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2951" y="814"/>
+            <point key="canvasLocation" x="2987" y="848"/>
         </scene>
         <!--Library Application-->
         <scene sceneID="Ygy-hi-cwl">
@@ -281,14 +281,23 @@
                                                         <items>
                                                             <barButtonItem title="Dashboard" id="f2u-DV-MMI">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <segue destination="KR1-Sd-VDR" kind="show" id="wsI-vA-BaX"/>
+                                                                </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="9RA-uP-l8g"/>
                                                             <barButtonItem title="Search" id="EFE-43-kdT">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <segue destination="LLm-pb-rzS" kind="show" id="DdH-Bp-AOm"/>
+                                                                </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="lj7-fp-Vfd"/>
                                                             <barButtonItem title="Check Out" id="ddq-pV-lSE">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <segue destination="8hB-xu-JZU" kind="show" id="tfU-h9-jGQ"/>
+                                                                </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="Uak-UI-9Uh"/>
                                                             <barButtonItem title="Enquiry" id="Jxz-bQ-t13">
@@ -315,7 +324,7 @@
                                         <rect key="frame" x="0.0" y="88" width="414" height="764"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MzN-2j-Htt" userLabel="stackDashboard">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="450"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="922"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="y9c-ea-juw" userLabel="rowOne">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="121"/>
@@ -348,13 +357,17 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WzU-wa-m0X" userLabel="borrowSquare">
                                                                 <rect key="frame" x="212" y="0.0" width="202" height="121"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="borrowedBook" translatesAutoresizingMaskIntoConstraints="NO" id="n6n-cG-t5c">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MY9-Np-pFv" userLabel="btnBorrowed">
                                                                         <rect key="frame" x="61" y="0.0" width="80" height="80"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="80" id="imt-0a-Qd6"/>
-                                                                            <constraint firstAttribute="width" constant="80" id="jUH-qE-epM"/>
+                                                                            <constraint firstAttribute="width" constant="80" id="N4l-eY-fde"/>
+                                                                            <constraint firstAttribute="height" constant="80" id="y51-Y9-z8k"/>
                                                                         </constraints>
-                                                                    </imageView>
+                                                                        <state key="normal" title="Button" image="borrowedBook"/>
+                                                                        <connections>
+                                                                            <action selector="onClickBooksBorrowed:" destination="KR1-Sd-VDR" eventType="touchUpInside" id="bHG-mw-BkB"/>
+                                                                        </connections>
+                                                                    </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Books borrowed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BT3-gw-zqa">
                                                                         <rect key="frame" x="39" y="80" width="124" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -426,7 +439,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Ge-ZV-MLg" userLabel="stackTableView">
-                                                        <rect key="frame" x="0.0" y="285.5" width="414" height="164.5"/>
+                                                        <rect key="frame" x="0.0" y="285.5" width="414" height="636.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of Borrowed Books" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFe-8l-FHB" userLabel="tableHeading">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="26.5"/>
@@ -435,11 +448,23 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qCS-4s-S3l">
-                                                                <rect key="frame" x="0.0" y="36.5" width="414" height="128"/>
+                                                                <rect key="frame" x="0.0" y="36.5" width="414" height="600"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="600" id="fnH-ap-xCM"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="7Ge-ZV-MLg" id="1qx-y9-zyM"/>
+                                                                    <outlet property="delegate" destination="7Ge-ZV-MLg" id="BUR-pi-5qF"/>
+                                                                </connections>
                                                             </tableView>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="qCS-4s-S3l" secondAttribute="trailing" id="SVs-Z4-LPw"/>
+                                                            <constraint firstItem="qCS-4s-S3l" firstAttribute="top" secondItem="cFe-8l-FHB" secondAttribute="bottom" constant="10" id="hhs-lm-U2D"/>
+                                                            <constraint firstItem="qCS-4s-S3l" firstAttribute="leading" secondItem="7Ge-ZV-MLg" secondAttribute="leading" id="vEO-ip-fit"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -481,6 +506,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Library Application" id="a7m-og-4No"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="tableViewBooks" destination="qCS-4s-S3l" id="S2R-TV-0Vy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jzD-XM-A7R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -652,7 +680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpJ-aI-gxo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="814"/>
+            <point key="canvasLocation" x="32" y="848"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BwA-Az-cmL">
@@ -675,7 +703,7 @@
         <!--Checkout-->
         <scene sceneID="byl-TB-7tV">
             <objects>
-                <viewController title="Checkout" id="8hB-xu-JZU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckoutViewController" title="Checkout" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8hB-xu-JZU" customClass="CheckoutViewController" customModule="Library_application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VQt-iK-MCb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -796,10 +824,14 @@
                             <constraint firstItem="xwH-hl-ywv" firstAttribute="leading" secondItem="VQt-iK-MCb" secondAttribute="leading" id="ScE-1Q-Ggc"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="c9v-M6-L3Y"/>
+                    <connections>
+                        <outlet property="tableViewBooks" destination="ytr-YG-MHt" id="oFv-Mm-qCh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ycf-2a-RVt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1043" y="814"/>
+            <point key="canvasLocation" x="978" y="849"/>
         </scene>
     </scenes>
     <resources>

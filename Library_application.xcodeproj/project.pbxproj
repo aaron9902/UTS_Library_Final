@@ -18,8 +18,7 @@
 		47E626E32650DC18004F9C6C /* PMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E626E02650DC18004F9C6C /* PMAlertAction.swift */; };
 		47E626E42650DC18004F9C6C /* PMAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E626E12650DC18004F9C6C /* PMAlertController.xib */; };
 		47E626E52650DC18004F9C6C /* PMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E626E22650DC18004F9C6C /* PMAlertController.swift */; };
-		54DC4235264FE5470051B474 /* dashboardTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC4233264FE5470051B474 /* dashboardTableCell.swift */; };
-		54DC4236264FE5470051B474 /* dashboardTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54DC4234264FE5470051B474 /* dashboardTableCell.xib */; };
+		54AD4C0D265108DC0058C1AF /* CheckoutViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD4C0C265108DC0058C1AF /* CheckoutViewcontroller.swift */; };
 		932139D7264A9B6C007F32B6 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932139D6264A9B6C007F32B6 /* DashboardViewController.swift */; };
 		932139D9264A9FBA007F32B6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932139D8264A9FBA007F32B6 /* SearchViewController.swift */; };
 		932139DB264AA0B0007F32B6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932139DA264AA0B0007F32B6 /* DetailViewController.swift */; };
@@ -45,8 +44,7 @@
 		47E626E02650DC18004F9C6C /* PMAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMAlertAction.swift; sourceTree = "<group>"; };
 		47E626E12650DC18004F9C6C /* PMAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMAlertController.xib; sourceTree = "<group>"; };
 		47E626E22650DC18004F9C6C /* PMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMAlertController.swift; sourceTree = "<group>"; };
-		54DC4233264FE5470051B474 /* dashboardTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboardTableCell.swift; sourceTree = "<group>"; };
-		54DC4234264FE5470051B474 /* dashboardTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = dashboardTableCell.xib; sourceTree = "<group>"; };
+		54AD4C0C265108DC0058C1AF /* CheckoutViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewcontroller.swift; sourceTree = "<group>"; };
 		932139D6264A9B6C007F32B6 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		932139D8264A9FBA007F32B6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		932139DA264AA0B0007F32B6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 		932139DD264AA147007F32B6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				54DC4233264FE5470051B474 /* dashboardTableCell.swift */,
 				932139D6264A9B6C007F32B6 /* DashboardViewController.swift */,
 				932139D8264A9FBA007F32B6 /* SearchViewController.swift */,
 				93AD95622647D4E30069571D /* LoginViewController.swift */,
@@ -114,6 +111,7 @@
 				26DDC7A7264BE80F00180980 /* EnquiryViewController.swift */,
 				26CA49C6264BF998006772F1 /* EnquiryConfirmationViewController.swift */,
 				474F9070264E9F76006E0EFE /* SearchTableViewCell.swift */,
+				54AD4C0C265108DC0058C1AF /* CheckoutViewcontroller.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -122,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				93AD95642647D4E30069571D /* Main.storyboard */,
-				54DC4234264FE5470051B474 /* dashboardTableCell.xib */,
 				93AD95692647D4E50069571D /* LaunchScreen.storyboard */,
 				474F9064264E1BF2006E0EFE /* SearchTableViewCell.xib */,
 			);
@@ -227,7 +224,6 @@
 				93AD95682647D4E50069571D /* Assets.xcassets in Resources */,
 				93AD95662647D4E30069571D /* Main.storyboard in Resources */,
 				474F9066264E1BF2006E0EFE /* SearchTableViewCell.xib in Resources */,
-				54DC4236264FE5470051B474 /* dashboardTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,9 +245,9 @@
 				93AD955F2647D4E30069571D /* AppDelegate.swift in Sources */,
 				47E626D72650D559004F9C6C /* CommonProperty.swift in Sources */,
 				932139DB264AA0B0007F32B6 /* DetailViewController.swift in Sources */,
-				54DC4235264FE5470051B474 /* dashboardTableCell.swift in Sources */,
 				93AD95612647D4E30069571D /* SceneDelegate.swift in Sources */,
 				474F9071264E9F76006E0EFE /* SearchTableViewCell.swift in Sources */,
+				54AD4C0D265108DC0058C1AF /* CheckoutViewcontroller.swift in Sources */,
 				47E626DB2650D5AC004F9C6C /* InAppAllViewData.swift in Sources */,
 				932139D7264A9B6C007F32B6 /* DashboardViewController.swift in Sources */,
 				932139DF264AA16C007F32B6 /* UserData.swift in Sources */,
