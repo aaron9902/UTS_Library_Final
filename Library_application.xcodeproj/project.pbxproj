@@ -9,17 +9,21 @@
 /* Begin PBXBuildFile section */
 		26CA49C7264BF998006772F1 /* EnquiryConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA49C6264BF998006772F1 /* EnquiryConfirmationViewController.swift */; };
 		26DDC7A8264BE80F00180980 /* EnquiryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDC7A7264BE80F00180980 /* EnquiryViewController.swift */; };
-		474F9060264E1217006E0EFE /* NB International Regular Webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 474F905F264E1217006E0EFE /* NB International Regular Webfont.ttf */; };
 		474F9066264E1BF2006E0EFE /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474F9064264E1BF2006E0EFE /* SearchTableViewCell.xib */; };
 		474F906C264E9410006E0EFE /* books.json in Resources */ = {isa = PBXBuildFile; fileRef = 474F906B264E9410006E0EFE /* books.json */; };
 		474F9071264E9F76006E0EFE /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474F9070264E9F76006E0EFE /* SearchTableViewCell.swift */; };
 		47A8DCC7264DA73F0014A08D /* BookShelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A8DCC6264DA73F0014A08D /* BookShelf.swift */; };
+		47E626D72650D559004F9C6C /* CommonProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E626D62650D559004F9C6C /* CommonProperty.swift */; };
+		47E626DB2650D5AC004F9C6C /* InAppAllViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E626DA2650D5AC004F9C6C /* InAppAllViewData.swift */; };
+		47E626E32650DC18004F9C6C /* PMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E626E02650DC18004F9C6C /* PMAlertAction.swift */; };
+		47E626E42650DC18004F9C6C /* PMAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47E626E12650DC18004F9C6C /* PMAlertController.xib */; };
+		47E626E52650DC18004F9C6C /* PMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E626E22650DC18004F9C6C /* PMAlertController.swift */; };
 		54DC4235264FE5470051B474 /* dashboardTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54DC4233264FE5470051B474 /* dashboardTableCell.swift */; };
 		54DC4236264FE5470051B474 /* dashboardTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54DC4234264FE5470051B474 /* dashboardTableCell.xib */; };
 		932139D7264A9B6C007F32B6 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932139D6264A9B6C007F32B6 /* DashboardViewController.swift */; };
 		932139D9264A9FBA007F32B6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932139D8264A9FBA007F32B6 /* SearchViewController.swift */; };
 		932139DB264AA0B0007F32B6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932139DA264AA0B0007F32B6 /* DetailViewController.swift */; };
-		932139DF264AA16C007F32B6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932139DE264AA16C007F32B6 /* User.swift */; };
+		932139DF264AA16C007F32B6 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932139DE264AA16C007F32B6 /* UserData.swift */; };
 		932139E1264AA176007F32B6 /* BookShelfManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932139E0264AA176007F32B6 /* BookShelfManager.swift */; };
 		93AD955F2647D4E30069571D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD955E2647D4E30069571D /* AppDelegate.swift */; };
 		93AD95612647D4E30069571D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AD95602647D4E30069571D /* SceneDelegate.swift */; };
@@ -32,17 +36,21 @@
 /* Begin PBXFileReference section */
 		26CA49C6264BF998006772F1 /* EnquiryConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnquiryConfirmationViewController.swift; sourceTree = "<group>"; };
 		26DDC7A7264BE80F00180980 /* EnquiryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnquiryViewController.swift; sourceTree = "<group>"; };
-		474F905F264E1217006E0EFE /* NB International Regular Webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NB International Regular Webfont.ttf"; sourceTree = "<group>"; };
 		474F9064264E1BF2006E0EFE /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		474F906B264E9410006E0EFE /* books.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = books.json; sourceTree = "<group>"; };
 		474F9070264E9F76006E0EFE /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		47A8DCC6264DA73F0014A08D /* BookShelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelf.swift; sourceTree = "<group>"; };
+		47E626D62650D559004F9C6C /* CommonProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonProperty.swift; sourceTree = "<group>"; };
+		47E626DA2650D5AC004F9C6C /* InAppAllViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppAllViewData.swift; sourceTree = "<group>"; };
+		47E626E02650DC18004F9C6C /* PMAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMAlertAction.swift; sourceTree = "<group>"; };
+		47E626E12650DC18004F9C6C /* PMAlertController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PMAlertController.xib; sourceTree = "<group>"; };
+		47E626E22650DC18004F9C6C /* PMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PMAlertController.swift; sourceTree = "<group>"; };
 		54DC4233264FE5470051B474 /* dashboardTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dashboardTableCell.swift; sourceTree = "<group>"; };
 		54DC4234264FE5470051B474 /* dashboardTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = dashboardTableCell.xib; sourceTree = "<group>"; };
 		932139D6264A9B6C007F32B6 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		932139D8264A9FBA007F32B6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		932139DA264AA0B0007F32B6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		932139DE264AA16C007F32B6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		932139DE264AA16C007F32B6 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		932139E0264AA176007F32B6 /* BookShelfManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookShelfManager.swift; sourceTree = "<group>"; };
 		93AD955B2647D4E30069571D /* Library_application.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Library_application.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93AD955E2647D4E30069571D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,13 +73,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47E626D52650D4ED004F9C6C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				47E626D62650D559004F9C6C /* CommonProperty.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		47E626DE2650DBB1004F9C6C /* CustomLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				47E626E02650DC18004F9C6C /* PMAlertAction.swift */,
+				47E626E22650DC18004F9C6C /* PMAlertController.swift */,
+				47E626E12650DC18004F9C6C /* PMAlertController.xib */,
+			);
+			path = CustomLibrary;
+			sourceTree = "<group>";
+		};
 		932139DC264AA131007F32B6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				474F906B264E9410006E0EFE /* books.json */,
-				932139DE264AA16C007F32B6 /* User.swift */,
+				932139DE264AA16C007F32B6 /* UserData.swift */,
 				932139E0264AA176007F32B6 /* BookShelfManager.swift */,
 				47A8DCC6264DA73F0014A08D /* BookShelf.swift */,
+				47E626DA2650D5AC004F9C6C /* InAppAllViewData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,14 +148,15 @@
 		93AD955D2647D4E30069571D /* Library_application */ = {
 			isa = PBXGroup;
 			children = (
+				47E626D52650D4ED004F9C6C /* Common */,
+				932139DC264AA131007F32B6 /* Model */,
 				932139E2264AA1BE007F32B6 /* View */,
 				932139DD264AA147007F32B6 /* Controller */,
-				932139DC264AA131007F32B6 /* Model */,
 				93AD955E2647D4E30069571D /* AppDelegate.swift */,
 				93AD95602647D4E30069571D /* SceneDelegate.swift */,
 				93AD95672647D4E50069571D /* Assets.xcassets */,
 				93AD956C2647D4E50069571D /* Info.plist */,
-				474F905F264E1217006E0EFE /* NB International Regular Webfont.ttf */,
+				47E626DE2650DBB1004F9C6C /* CustomLibrary */,
 			);
 			path = Library_application;
 			sourceTree = "<group>";
@@ -195,9 +223,9 @@
 			files = (
 				474F906C264E9410006E0EFE /* books.json in Resources */,
 				93AD956B2647D4E50069571D /* LaunchScreen.storyboard in Resources */,
+				47E626E42650DC18004F9C6C /* PMAlertController.xib in Resources */,
 				93AD95682647D4E50069571D /* Assets.xcassets in Resources */,
 				93AD95662647D4E30069571D /* Main.storyboard in Resources */,
-				474F9060264E1217006E0EFE /* NB International Regular Webfont.ttf in Resources */,
 				474F9066264E1BF2006E0EFE /* SearchTableViewCell.xib in Resources */,
 				54DC4236264FE5470051B474 /* dashboardTableCell.xib in Resources */,
 			);
@@ -211,18 +239,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				932139E1264AA176007F32B6 /* BookShelfManager.swift in Sources */,
+				47E626E52650DC18004F9C6C /* PMAlertController.swift in Sources */,
+				47E626E32650DC18004F9C6C /* PMAlertAction.swift in Sources */,
 				26CA49C7264BF998006772F1 /* EnquiryConfirmationViewController.swift in Sources */,
 				26DDC7A8264BE80F00180980 /* EnquiryViewController.swift in Sources */,
 				47A8DCC7264DA73F0014A08D /* BookShelf.swift in Sources */,
 				932139D9264A9FBA007F32B6 /* SearchViewController.swift in Sources */,
 				93AD95632647D4E30069571D /* LoginViewController.swift in Sources */,
 				93AD955F2647D4E30069571D /* AppDelegate.swift in Sources */,
+				47E626D72650D559004F9C6C /* CommonProperty.swift in Sources */,
 				932139DB264AA0B0007F32B6 /* DetailViewController.swift in Sources */,
 				54DC4235264FE5470051B474 /* dashboardTableCell.swift in Sources */,
 				93AD95612647D4E30069571D /* SceneDelegate.swift in Sources */,
 				474F9071264E9F76006E0EFE /* SearchTableViewCell.swift in Sources */,
+				47E626DB2650D5AC004F9C6C /* InAppAllViewData.swift in Sources */,
 				932139D7264A9B6C007F32B6 /* DashboardViewController.swift in Sources */,
-				932139DF264AA16C007F32B6 /* User.swift in Sources */,
+				932139DF264AA16C007F32B6 /* UserData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

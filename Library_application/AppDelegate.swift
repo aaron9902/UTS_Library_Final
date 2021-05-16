@@ -7,13 +7,24 @@
 
 import UIKit
 
+var usersData = [UserData]()
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    
+   // var userData = UserData(userID: String(), userPassword: String(), bookBorrowedArray: [String](), bookInCartArray: [String]())
+    let commonProperty = CommonProperty()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        usersData = commonProperty.retrieveAndDecodeStoredUsersData()
+        if usersData.isEmpty {
+            let user1 = UserData(userID: "13736626", userPassword: "1234", bookBorrowedArray: [String : String](), bookInCartArray: [String]())
+            let user2 = UserData(userID: "14085930", userPassword: "1234", bookBorrowedArray: [String : String](), bookInCartArray: [String]())
+            usersData.append(contentsOf: [user1,user2])
+            commonProperty.encodeAndStoreUsersData(usersData: usersData)
+        }
+        
         return true
     }
 
