@@ -5,6 +5,7 @@
 //  Created by Andy Zhang on 12/5/21.
 //
 
+import Foundation
 import UIKit
 
 class EnquiryViewController: UIViewController {
@@ -16,8 +17,34 @@ class EnquiryViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var enquiryField: UITextView!
+    var username = ""
     
+    //Toolbar programatical navigation
+    @IBAction func navigateDashboard(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                           let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
+        nextViewController.username = self.username
+        self.present(nextViewController, animated: true)
+    }
+    @IBAction func navigateSearch(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                           let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        nextViewController.username = self.username
+        self.present(nextViewController, animated: true)
+    }
+    @IBAction func navigateCheckout(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
+        nextViewController.username = self.username
+        self.present(nextViewController, animated: true)
+    }
     
+    @IBAction func navigateEnquiry(_ sender: Any) {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EnquiryViewController") as! EnquiryViewController
+            nextViewController.username = self.username
+        self.present(nextViewController, animated: true)
+        }
     override func viewDidLoad() {
         super.viewDidLoad()
         

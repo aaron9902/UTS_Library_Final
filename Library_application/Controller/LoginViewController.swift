@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-
 import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
@@ -33,8 +31,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     // Navigate to Dashboard Sceen when user enter correct username and password
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
-                    nextViewController.studentId = user.userID
-                    self.navigationController!.pushViewController(nextViewController, animated: true)
+                    nextViewController.username = user.userID
+                    self.present(nextViewController, animated: true)
                 } else {
                     openAlertDialog(title: loginViewData.invalidTitle, description: loginViewData.invalidDescription)
                 }

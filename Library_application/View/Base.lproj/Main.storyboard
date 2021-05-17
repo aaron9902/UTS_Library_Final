@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -118,7 +117,7 @@
         <!--Enquiry View Controller-->
         <scene sceneID="ntk-gO-9Ys">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="bCc-CF-dE7" customClass="EnquiryViewController" customModule="Library_application" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnquiryViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bCc-CF-dE7" customClass="EnquiryViewController" customModule="Library_application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dTp-tE-fxC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,15 +135,27 @@
                                 <items>
                                     <barButtonItem title="Dashboard" id="Ug0-LG-XaF">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="navigateDashboard:" destination="bCc-CF-dE7" id="cNa-BG-2QR"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Search" id="5d5-ND-c7J">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="navigateSearch:" destination="bCc-CF-dE7" id="YaT-zZ-Zlc"/>
+                                        </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Check Out" id="OZ6-NP-afh">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="navigateCheckout:" destination="bCc-CF-dE7" id="NZc-W3-4U7"/>
+                                        </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Enqury" id="hHR-iD-mhq">
+                                    <barButtonItem title="Enquiry" id="hHR-iD-mhq">
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="navigateEnquiry:" destination="bCc-CF-dE7" id="YNX-0j-V8I"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
@@ -256,7 +267,7 @@
         <!--Library Application-->
         <scene sceneID="Ygy-hi-cwl">
             <objects>
-                <viewController storyboardIdentifier="DashboardViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="KR1-Sd-VDR" customClass="DashboardViewController" customModule="Library_application" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DashboardViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KR1-Sd-VDR" customClass="DashboardViewController" customModule="Library_application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RwY-2j-rjM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -282,26 +293,29 @@
                                                             <barButtonItem title="Dashboard" id="f2u-DV-MMI">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
-                                                                    <segue destination="KR1-Sd-VDR" kind="show" id="wsI-vA-BaX"/>
+                                                                    <action selector="navigateDashboard:" destination="KR1-Sd-VDR" id="CLO-Si-QDQ"/>
                                                                 </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="9RA-uP-l8g"/>
                                                             <barButtonItem title="Search" id="EFE-43-kdT">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
-                                                                    <segue destination="LLm-pb-rzS" kind="show" id="DdH-Bp-AOm"/>
+                                                                    <action selector="navigateSearch:" destination="KR1-Sd-VDR" id="oF0-mk-Kac"/>
                                                                 </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="lj7-fp-Vfd"/>
                                                             <barButtonItem title="Check Out" id="ddq-pV-lSE">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
-                                                                    <segue destination="8hB-xu-JZU" kind="show" id="tfU-h9-jGQ"/>
+                                                                    <action selector="navigateCheckout:" destination="KR1-Sd-VDR" id="U9S-0J-dke"/>
                                                                 </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="Uak-UI-9Uh"/>
                                                             <barButtonItem title="Enquiry" id="Jxz-bQ-t13">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="navigateEnquiry:" destination="KR1-Sd-VDR" id="SnY-TA-Nxx"/>
+                                                                </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="111-xm-ZcC"/>
                                                         </items>
@@ -339,8 +353,8 @@
                                                                             <constraint firstAttribute="width" constant="80" id="wUv-cD-8Q3"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Welcome to dashboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bJ-uT-26b" userLabel="Welcome User">
-                                                                        <rect key="frame" x="0.0" y="80" width="131.5" height="25"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Hi User!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5bJ-uT-26b" userLabel="Welcome User">
+                                                                        <rect key="frame" x="36.5" y="80" width="58.5" height="25"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -368,20 +382,20 @@
                                                                             <action selector="onClickBooksBorrowed:" destination="KR1-Sd-VDR" eventType="touchUpInside" id="bHG-mw-BkB"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Books borrowed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BT3-gw-zqa">
-                                                                        <rect key="frame" x="3.5" y="80" width="124" height="20.5"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Borrowed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BT3-gw-zqa">
+                                                                        <rect key="frame" x="29" y="80" width="73.5" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4F-Yo-YGh" userLabel="borrowCount">
-                                                                        <rect key="frame" x="56.5" y="100.5" width="18" height="24"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4F-Yo-YGh" userLabel="borrowCount">
+                                                                        <rect key="frame" x="60.5" y="100.5" width="10.5" height="24"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <color key="textColor" systemColor="systemGreenColor"/>
                                                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </label>
                                                                 </subviews>
-                                                                <color key="backgroundColor" systemColor="linkColor"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.25720244650000001" blue="0.75021028519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="enS-Uq-yko" userLabel="dueSquare">
                                                                 <rect key="frame" x="282.5" y="0.0" width="131.5" height="124.5"/>
@@ -393,6 +407,9 @@
                                                                             <constraint firstAttribute="width" constant="80" id="hrh-4O-udx"/>
                                                                         </constraints>
                                                                         <state key="normal" title="Button" image="pastDue"/>
+                                                                        <connections>
+                                                                            <action selector="overdueClicked:" destination="KR1-Sd-VDR" eventType="touchUpInside" id="EGm-hn-XnF"/>
+                                                                        </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overdue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNZ-WZ-vnW">
                                                                         <rect key="frame" x="33.5" y="80" width="65" height="20.5"/>
@@ -400,8 +417,8 @@
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecy-hl-IpM" userLabel="dueCount">
-                                                                        <rect key="frame" x="60" y="100.5" width="11.5" height="24"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecy-hl-IpM" userLabel="dueCount">
+                                                                        <rect key="frame" x="59.5" y="100.5" width="12.5" height="24"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                         <color key="textColor" systemColor="systemPinkColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -479,7 +496,13 @@
                     <navigationItem key="navigationItem" title="Library Application" id="a7m-og-4No"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="borrowCount" destination="F4F-Yo-YGh" id="bWa-Ws-ets"/>
+                        <outlet property="borrowStack" destination="WzU-wa-m0X" id="bAm-kw-UYA"/>
+                        <outlet property="dueCount" destination="Ecy-hl-IpM" id="dU6-Cm-PcO"/>
+                        <outlet property="dueStack" destination="enS-Uq-yko" id="PKO-Hu-O1c"/>
+                        <outlet property="tableHeading" destination="cFe-8l-FHB" id="AlG-dK-IvM"/>
                         <outlet property="tableViewBooks" destination="qCS-4s-S3l" id="S2R-TV-0Vy"/>
+                        <outlet property="welcomeName" destination="YXm-AQ-3eT" id="ERO-oF-blD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jzD-XM-A7R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -489,7 +512,7 @@
         <!--Search View Controller-->
         <scene sceneID="k4m-2F-7FC">
             <objects>
-                <viewController storyboardIdentifier="SearchViewController" id="LLm-pb-rzS" customClass="SearchViewController" customModule="Library_application" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LLm-pb-rzS" customClass="SearchViewController" customModule="Library_application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H9P-k3-G81">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -518,18 +541,30 @@
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="nlf-B9-Xzg"/>
                                                             <barButtonItem title="Dashboard" id="abr-ni-aFr">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="navigateDashboard:" destination="LLm-pb-rzS" id="nD5-Wg-WpK"/>
+                                                                </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="aLY-SJ-api"/>
                                                             <barButtonItem title="Search" id="g8n-9o-7AQ">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="navigateSearch:" destination="LLm-pb-rzS" id="4LL-Hx-3H2"/>
+                                                                </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="NNy-3y-uci"/>
                                                             <barButtonItem title="Check Out" id="D43-Hu-hrw">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="navigateCheckout:" destination="LLm-pb-rzS" id="gHE-SR-C6C"/>
+                                                                </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="yVw-qO-2d0"/>
                                                             <barButtonItem title="Enquiry" id="TQc-sp-XK6">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="navigateEnquiry:" destination="LLm-pb-rzS" id="JAd-GH-AJL"/>
+                                                                </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="hjf-Fb-3eJ"/>
                                                         </items>
@@ -570,7 +605,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="639"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommendations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyU-VX-zSd" customClass="PaddingLabel" customModule="Library_application" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="398" height="33.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="398" height="23.5"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" name="NBInternationalRegularWebfont" family="NB International" pointSize="20"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -591,7 +626,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N4M-h5-AQm">
-                                                                        <rect key="frame" x="0.0" y="33.5" width="398" height="605.5"/>
+                                                                        <rect key="frame" x="0.0" y="23.5" width="398" height="615.5"/>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                     </tableView>
                                                                 </subviews>
@@ -689,53 +724,67 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xwH-hl-ywv">
-                                <rect key="frame" x="0.0" y="39" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zar-eW-FYs" userLabel="Title and Toolbar View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcy-0E-Wyw" userLabel="Title and Toolbar View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TdF-tp-dbp" userLabel="Title and Toolbar Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hni-dR-lie" userLabel="Title and Toolbar Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library Application" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oa6-j1-ngy" userLabel="Title">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library Application" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHZ-Mg-T7V" userLabel="Title">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                        <color key="backgroundColor" red="0.0" green="0.25720244650000001" blue="0.75021028519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="NBInternationalRegularWebfont" family="NB International" pointSize="20"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zt8-G7-eF0">
+                                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRh-kh-7Ea">
                                                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="4xq-vi-QH7"/>
+                                                            <constraint firstAttribute="height" constant="44" id="Fmz-5E-fVf"/>
                                                         </constraints>
                                                         <items>
-                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="dd6-sm-IoZ"/>
-                                                            <barButtonItem title="Dashboard" id="R6P-ah-lBY">
+                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="yFS-Ab-JrO"/>
+                                                            <barButtonItem title="Dashboard" id="VsT-f0-aOY">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="navigateDashboard:" destination="8hB-xu-JZU" id="cw9-2h-iYA"/>
+                                                                </connections>
                                                             </barButtonItem>
-                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="NeW-Dp-y5L"/>
-                                                            <barButtonItem title="Search" id="bUU-VV-jUY">
+                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="i02-3c-hh2"/>
+                                                            <barButtonItem title="Search" id="hz9-h7-RTJ">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="navigateSearch:" destination="8hB-xu-JZU" id="yCh-Km-0e5"/>
+                                                                </connections>
                                                             </barButtonItem>
-                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="TpT-EU-535"/>
-                                                            <barButtonItem title="Check Out" id="IPB-9F-BST">
+                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="adb-zK-cCN"/>
+                                                            <barButtonItem title="Check Out" id="3Oc-SF-nMr">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="navigateCheckout:" destination="8hB-xu-JZU" id="G6G-JD-ZGZ"/>
+                                                                </connections>
                                                             </barButtonItem>
-                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="z55-GM-9py"/>
-                                                            <barButtonItem title="Enquiry" id="gFJ-FN-5OT">
+                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="I3q-e5-puY"/>
+                                                            <barButtonItem title="Enquiry" id="KWx-96-QnB">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <connections>
+                                                                    <action selector="navigateEnquiry:" destination="8hB-xu-JZU" id="Ano-xl-2Fr"/>
+                                                                </connections>
                                                             </barButtonItem>
-                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="iBO-Kl-cDw"/>
+                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="dSa-iG-52f"/>
                                                         </items>
                                                     </toolbar>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="TdF-tp-dbp" firstAttribute="top" secondItem="zar-eW-FYs" secondAttribute="top" id="Q3v-tI-Xim"/>
-                                            <constraint firstItem="TdF-tp-dbp" firstAttribute="leading" secondItem="zar-eW-FYs" secondAttribute="leading" id="Yx6-Xa-YQe"/>
-                                            <constraint firstAttribute="bottom" secondItem="TdF-tp-dbp" secondAttribute="bottom" id="kFm-XF-b02"/>
-                                            <constraint firstAttribute="trailing" secondItem="TdF-tp-dbp" secondAttribute="trailing" id="v2b-c3-uAy"/>
+                                            <constraint firstAttribute="trailing" secondItem="hni-dR-lie" secondAttribute="trailing" id="JWm-yT-bRn"/>
+                                            <constraint firstItem="hni-dR-lie" firstAttribute="leading" secondItem="Pcy-0E-Wyw" secondAttribute="leading" id="SBI-5z-Tp5"/>
+                                            <constraint firstItem="hni-dR-lie" firstAttribute="top" secondItem="Pcy-0E-Wyw" secondAttribute="top" id="fSE-vK-HnI"/>
+                                            <constraint firstAttribute="height" constant="88" id="gpK-EM-0YW"/>
+                                            <constraint firstAttribute="bottom" secondItem="hni-dR-lie" secondAttribute="bottom" id="uXD-9n-wo8"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AP-9I-BkI" userLabel="Books View">
@@ -790,18 +839,15 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="8AP-9I-BkI" firstAttribute="centerX" secondItem="xwH-hl-ywv" secondAttribute="centerX" id="GwC-gc-iG3"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ij7-FJ-OEp"/>
-                        <color key="backgroundColor" name="AccentColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.25720244650000001" blue="0.75021028519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ij7-FJ-OEp" firstAttribute="bottom" secondItem="xwH-hl-ywv" secondAttribute="bottom" constant="5" id="0zT-iU-jmy"/>
-                            <constraint firstItem="xwH-hl-ywv" firstAttribute="centerY" secondItem="VQt-iK-MCb" secondAttribute="centerY" id="4sN-rt-ew5"/>
-                            <constraint firstAttribute="trailing" secondItem="xwH-hl-ywv" secondAttribute="trailing" id="KPN-Ja-Psb"/>
-                            <constraint firstItem="xwH-hl-ywv" firstAttribute="leading" secondItem="VQt-iK-MCb" secondAttribute="leading" id="ScE-1Q-Ggc"/>
+                            <constraint firstItem="xwH-hl-ywv" firstAttribute="leading" secondItem="ij7-FJ-OEp" secondAttribute="leading" id="I2S-Nn-eNH"/>
+                            <constraint firstItem="xwH-hl-ywv" firstAttribute="trailing" secondItem="ij7-FJ-OEp" secondAttribute="trailing" id="S0N-RH-wOX"/>
+                            <constraint firstItem="ij7-FJ-OEp" firstAttribute="bottom" secondItem="xwH-hl-ywv" secondAttribute="bottom" id="bCX-Pa-Ja6"/>
+                            <constraint firstItem="xwH-hl-ywv" firstAttribute="top" secondItem="ij7-FJ-OEp" secondAttribute="top" id="bP2-xs-NcF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="c9v-M6-L3Y"/>
@@ -816,7 +862,7 @@
     </scenes>
     <designables>
         <designable name="vyU-VX-zSd">
-            <size key="intrinsicContentSize" width="179" height="33.5"/>
+            <size key="intrinsicContentSize" width="169" height="23.5"/>
         </designable>
     </designables>
     <resources>
@@ -824,14 +870,8 @@
         <image name="borrowedBook" width="166.5" height="166.5"/>
         <image name="pastDue" width="166.5" height="166.5"/>
         <image name="wecomeLogo" width="165.5" height="167"/>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

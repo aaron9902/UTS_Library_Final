@@ -25,7 +25,34 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
     var tableViewBooksData: BookShelf? = nil
     var searchText: String? = nil
     var indexForCell = Int()
-    let username = "14085930"
+    var username = ""
+    
+    //Toolbar programatical navigation
+    @IBAction func navigateDashboard(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                           let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
+        nextViewController.username = self.username
+        self.present(nextViewController, animated: true)
+    }
+    @IBAction func navigateSearch(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                           let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        nextViewController.username = self.username
+        self.present(nextViewController, animated: true)
+    }
+    @IBAction func navigateCheckout(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                           let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
+        nextViewController.username = self.username
+        self.present(nextViewController, animated: true)
+    }
+    
+    @IBAction func navigateEnquiry(_ sender: Any) {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EnquiryViewController") as! EnquiryViewController
+            nextViewController.username = self.username
+        self.present(nextViewController, animated: true)
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
