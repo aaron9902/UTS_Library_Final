@@ -11,13 +11,16 @@ import UIKit
 class SearchViewController: UIViewController, cellCommunicateDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
     
-    
     let searchViewData = SearchViewData()
     var username = ""
+    
     @IBOutlet weak var tableViewBooks: UITableView!
     @IBOutlet weak var searchBarSearchBooks: UISearchBar!
     @IBOutlet weak var lblResult: UILabel!
     @IBOutlet weak var btnLogout: UIButton!
+    
+    
+    @IBOutlet weak var barBtnSearch: UIBarButtonItem!
     
     //Toolbar programatical navigation
     //@IBAction func onClickOfSearch(_ sender: Any) {
@@ -34,6 +37,7 @@ class SearchViewController: UIViewController, cellCommunicateDelegate, UISearchB
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        barBtnSearch.tintColor = UIColor.init(red: 255.0/255.0, green: 35.0/255.0, blue: 5.0/255.0, alpha: 1.0)
         searchViewData.searchViewcommonDefaultSetting(tableViewBooks: tableViewBooks, searchBarSearchBooks: searchBarSearchBooks, lblResult: lblResult)
         
         if !usersData.isEmpty {

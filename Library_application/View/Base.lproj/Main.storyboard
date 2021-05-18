@@ -710,6 +710,7 @@
                     <navigationItem key="navigationItem" id="LMT-bp-z6N"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="barBtnSearch" destination="g8n-9o-7AQ" id="SPo-9E-gp9"/>
                         <outlet property="btnLogout" destination="yHj-ps-sQq" id="o8e-aJ-tJX"/>
                         <outlet property="lblResult" destination="vyU-VX-zSd" id="Eiz-fP-9Vz"/>
                         <outlet property="searchBarSearchBooks" destination="izJ-Ut-5Oa" id="bZQ-MU-cRl"/>
@@ -1210,10 +1211,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HJt-Kt-mIs"/>
+        <segue reference="pSp-Gi-pm6"/>
         <segue reference="1vD-RU-O2F"/>
-        <segue reference="eG5-h1-JYZ"/>
-        <segue reference="X54-o6-hIi"/>
+        <segue reference="MPz-oH-TCA"/>
+        <segue reference="fZm-FC-i1H"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="UTS_Logo" width="959" height="512"/>
