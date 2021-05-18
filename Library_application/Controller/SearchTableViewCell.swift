@@ -12,6 +12,8 @@ protocol cellCommunicateDelegate{
     func viewPreviewTapped(at index:IndexPath)
     func removeFromCartTapped(at index:IndexPath)
     func borrowBookTapped(at index:IndexPath)
+    func returnBookTapped(at index:IndexPath)
+
 }
 
 class SearchTableViewCell: UITableViewCell {
@@ -30,25 +32,29 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var btnBorrow: UIButton!
     @IBOutlet weak var btnRemove: UIButton!
     @IBOutlet weak var btnPreview: UIButton!
+    @IBOutlet weak var btnReturn: UIButton!
     var indexPath:IndexPath!
     
-    @IBAction func removeFromCart(_ sender: Any) {
+    @IBAction func removeFromCart(_ sender: UIButton) {
         self.delegate?.removeFromCartTapped(at: indexPath)
     }
-    @IBAction func borrowBook(_ sender: Any) {
+    @IBAction func borrowBook(_ sender: UIButton) {
         self.delegate?.borrowBookTapped(at: indexPath)
     }
-    @IBAction func viewPreview(_ sender: Any) {
+    @IBAction func viewPreview(_ sender: UIButton) {
         self.delegate?.viewPreviewTapped(at: indexPath)
     }
     @IBAction func addToCarts(_ sender: UIButton) {
         self.delegate?.addToCartTapped(at: indexPath)
     }
+    @IBAction func returnBook(_ sender: UIButton) {
+        self.delegate?.returnBookTapped(at: indexPath)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        commonTableViewCell.commonTableViewCellDefaultSetting(btnAddToCart: btnAddToCart, btnBorrow: btnBorrow, btnRemove: btnRemove, btnPreview: btnPreview)
+        commonTableViewCell.commonTableViewCellDefaultSetting(btnAddToCart: btnAddToCart, btnBorrow: btnBorrow, btnRemove: btnRemove, btnPreview: btnPreview, btnReturn: btnReturn)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

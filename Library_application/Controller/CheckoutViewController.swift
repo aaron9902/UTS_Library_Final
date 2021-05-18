@@ -10,54 +10,104 @@ import UIKit
 
 class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITableViewDelegate, UITableViewDataSource  {
     
-    
     func addToCartTapped(at index: IndexPath) {
-    //test
     }
+    
+    func returnBookTapped(at index: IndexPath) {
+    }
+    
     
     func viewPreviewTapped(at index: IndexPath) {
-       print()
+        let selectedBookID = (tableViewBooks.cellForRow(at: index) as! SearchTableViewCell).lblISBN.text
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        nextViewController.modalPresentationStyle = .fullScreen
+        nextViewController.modalTransitionStyle = .crossDissolve
+        nextViewController.username = "13736626"//self.username
+        nextViewController.bookId = selectedBookID!
+        self.present(nextViewController, animated: true)
+        
     }
-
+    
+    func removeFromCartTapped(at index: IndexPath) {
+        let selectedBookID = (tableViewBooks.cellForRow(at: index) as! SearchTableViewCell).lblISBN.text
+        if let user = user {
+            if user.bookInCartArray.contains(selectedBookID!) { user.bookInCartArray.remove(at: (user.bookInCartArray as NSArray).index(of: selectedBookID!))}
+            if user.bookBorrowedArray.keys.contains(selectedBookID!) { user.bookBorrowedArray[selectedBookID!] = nil }
+            
+            usersData.remove(at: usersData.firstIndex(where: {$0.userID == user.userID})!)
+            usersData.append(user)
+            commonProperty.encodeAndStoreUsersData(usersData: usersData)
+            openDialog(title: "Book Removed", description: "Book is removed from your Cart.", image: UIImage(named: "bookCart.png")!)
+        }
+    }
+    
+    func borrowBookTapped(at index: IndexPath) {
+        let selectedBookID = (tableViewBooks.cellForRow(at: index) as! SearchTableViewCell).lblISBN.text
+        if let user = user {
+            
+            var dayComponent = DateComponents()
+            dayComponent.day = 7
+            let dueDate = Calendar.current.date(byAdding: dayComponent, to: Date())
+            if user.bookBorrowedArray.keys.contains(selectedBookID!) { user.bookBorrowedArray[selectedBookID!] = dueDate }
+            else { user.bookBorrowedArray[selectedBookID!] = dueDate }
+            
+            if user.bookInCartArray.contains(selectedBookID!) { user.bookInCartArray.remove(at: (user.bookInCartArray as NSArray).index(of: selectedBookID!))}
+            
+            usersData.remove(at: usersData.firstIndex(where: {$0.userID == user.userID})!)
+            usersData.append(user)
+            commonProperty.encodeAndStoreUsersData(usersData: usersData)
+            
+            openDialog(title: "Book Borrowed", description: "Go to Dashboard to view your borrowed books. Return within 7 days to avoid dues.", image: UIImage(named: "borrowedBook.png")!)
+        }
+        
+    }
+    
     @IBOutlet weak var tableViewBooks: UITableView!
-    var bookShelfManager = BookShelfManager()
-    var bookShelf: BookShelf? = nil
+    //var bookShelfManager = BookShelfManager()
+    //var bookShelf: BookShelf? = nil
     var tableViewBooksData: BookShelf? = nil
     var searchText: String? = nil
     var indexForCell = Int()
     var username = ""
+    var user: UserData? = nil
+    let commonProperty = CommonProperty()
     
     //Toolbar programatical navigation
     @IBAction func navigateDashboard(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                           let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
         nextViewController.username = self.username
         self.present(nextViewController, animated: true)
     }
     @IBAction func navigateSearch(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                           let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
         nextViewController.username = self.username
         self.present(nextViewController, animated: true)
     }
     @IBAction func navigateCheckout(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                           let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
         nextViewController.username = self.username
         self.present(nextViewController, animated: true)
     }
     
     @IBAction func navigateEnquiry(_ sender: Any) {
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EnquiryViewController") as! EnquiryViewController
-            nextViewController.username = self.username
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EnquiryViewController") as! EnquiryViewController
+        nextViewController.username = self.username
         self.present(nextViewController, animated: true)
-        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bookShelf = bookShelfManager.fetchBooks()
-        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchText)
+        
+        if !usersData.isEmpty {
+            user = usersData.first(where: {$0.userID == "13736626"}) //username
+        }
+        //bookShelf = bookShelfManager.fetchBooks()
+        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf)
         tableViewBooks.delegate = self
         tableViewBooks.dataSource = self
         let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)
@@ -68,133 +118,55 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1                                                        //it has 1 single section
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = 0
-            if let tableViewBooksData = tableViewBooksData {
-                count = tableViewBooksData.books.count
-            }
+        if let tableViewBooksData = tableViewBooksData {
+            count = tableViewBooksData.books.count
+        }
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewBooks.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
-            cell.lblBookTitle.text = tableViewBooksData?.books[indexPath.row].title
-            cell.lblBookAuthor.text = tableViewBooksData?.books[indexPath.row].author
-            cell.lblBookEdition.text = tableViewBooksData?.books[indexPath.row].edition
-            cell.lblPublishedYear.text = tableViewBooksData?.books[indexPath.row].year
-            cell.lblISBN.text = tableViewBooksData?.books[indexPath.row].id
-            cell.btnAddToCart.isHidden = true
-            let imageName = "\(tableViewBooksData?.books[indexPath.row].id ?? "737930").jpg"//"yourImage.png"
-            let image = UIImage(named: imageName)!
-            cell.btnBorrow.isEnabled = true
-            cell.lblStatus.text = "In Cart"
-            cell.lblStatus.textColor = UIColor.systemYellow
-            cell.lblDueDate.text = ""
-            cell.imgViewBook.image = image
-            cell.delegate = self
-            cell.indexPath = indexPath
-            return cell
-    }
         
-    func removeFromCartTapped(at index: IndexPath) {
-        let clickedCell = tableViewBooks.cellForRow(at: index) as! SearchTableViewCell
-        let cellStatus:String? = clickedCell.lblStatus.text!
-        let selectedBookId = clickedCell.lblISBN.text
-        let commonProperty = CommonProperty()
-        usersData = commonProperty.retrieveAndDecodeStoredUsersData()
-        if let user = usersData.first(where: {$0.userID == username})
-            {
-            let usersDataIndex = usersData.firstIndex(where: {$0.userID == username})
-            if(cellStatus == "Borrowed")
-            {
-                let keyExists = user.bookBorrowedArray[selectedBookId!] != nil
-                if keyExists
-                {
-                    user.bookBorrowedArray.removeValue(forKey: selectedBookId!)
-                    usersData.remove(at: usersDataIndex!)
-                    usersData.append(user)
-                    commonProperty.encodeAndStoreUsersData(usersData: usersData)
-                }
-            }
-            else if (cellStatus == "In Cart")
-            {
-                let existInCart = user.bookInCartArray.contains(selectedBookId!)
-                if existInCart
-                {
-                    let cartIndex = user.bookInCartArray.firstIndex(of: selectedBookId!)
-                    user.bookInCartArray.remove(at: cartIndex!)
-                    usersData.remove(at: usersDataIndex!)
-                    usersData.append(user)
-                    commonProperty.encodeAndStoreUsersData(usersData: usersData)
-                }
+        if let tableViewBooksData = tableViewBooksData, let user = user {
+            let bookId = tableViewBooksData.books[indexPath.row].id
+            cell.imgViewBook.image = UIImage(named: "\(bookId).jpg")!
+            cell.lblBookTitle.text = tableViewBooksData.books[indexPath.row].title
+            cell.lblBookAuthor.text = tableViewBooksData.books[indexPath.row].author
+            cell.lblBookEdition.text = tableViewBooksData.books[indexPath.row].edition
+            cell.lblPublishedYear.text = tableViewBooksData.books[indexPath.row].year
+            cell.lblISBN.text = bookId
+            cell.btnPreview.isHidden = false
+            if user.bookInCartArray.contains(bookId) {
+                cell.lblStatus.text = "In Cart"
+                cell.lblStatus.textColor = UIColor.systemYellow
+                cell.lblDueDate.isHidden = true
+                cell.btnAddToCart.isHidden = true
+                cell.btnBorrow.isHidden = false
+                cell.btnRemove.isHidden = false
+                cell.btnReturn.isHidden = true
+                
             }
         }
-        // Delete the row from the data source
-        let intIndex = index.row
-        tableViewBooksData?.books.remove(at: intIndex)
-        tableViewBooks.deleteRows(at: [index], with: .fade)
-        tableViewBooks.reloadData()
-        }
-    
-    func borrowBookTapped(at index: IndexPath) {
-        let clickedCell = tableViewBooks.cellForRow(at: index) as! SearchTableViewCell
-        let now = Date()
-        let selectedBookId = clickedCell.lblISBN.text
-        let commonProperty = CommonProperty()
-        usersData = commonProperty.retrieveAndDecodeStoredUsersData()
-        if let user = usersData.first(where: {$0.userID == username})
-        {
-            let usersDataIndex = usersData.firstIndex(where: {$0.userID == username})
-            var currentBooks: [String : Date]  = user.bookBorrowedArray
-            let keyExists = currentBooks[selectedBookId!] != nil
-            if !keyExists
-            {
-                currentBooks[selectedBookId!] = now
-                user.bookBorrowedArray = currentBooks
-                usersData.remove(at: usersDataIndex!)
-                usersData.append(user)
-                commonProperty.encodeAndStoreUsersData(usersData: usersData)
-            }
-        }
-        let intIndex = index.row
-        tableViewBooksData?.books.remove(at: intIndex)
-        tableViewBooks.deleteRows(at: [index], with: .fade)
-        tableViewBooks.reloadData()
-        openAlertDialog()
-    }
-
-    fileprivate func openAlertDialog() {
-        
-        // This class creates the alert view
-        let alert = PMAlertController(title: "Book Borrowed", description: "Return within 7 days to avoid dues", image: UIImage(named: "borrowedBook.png"), style: .alert)
-        
-        //Add action button to alert view
-        alert.addAction(PMAlertAction(title: "OK", style: .default, action: { () in
-        
-        alert.dismiss(animated: true, completion: nil)
-            
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
+        cell.delegate = self
+        cell.indexPath = indexPath
+        return cell
     }
     
-    fileprivate func openReturnDialog() {
-        
-        // This class creates the alert view
-        let alert = PMAlertController(title: "Book Returned", description: "Contact librarian for confirmation", image: UIImage(named: "wecomeLogo.png"), style: .alert)
-        
-        //Add action button to alert view
+    
+    
+    fileprivate func openDialog(title: String, description: String, image: UIImage) {
+        let alert = PMAlertController(title: title, description: description, image: image, style: .alert)
         alert.addAction(PMAlertAction(title: "OK", style: .default, action: { () in
-        
-        alert.dismiss(animated: true, completion: nil)
-            
+            self.tableViewBooksData = self.getUpdatedTableViewData(bookShelf: bookShelf)
+            self.tableViewBooks.reloadData()
         }))
-        
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -202,19 +174,17 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
         return false                            // The table view should not be editable by the user.
     }
     
-    func getUpdatedTableViewData(bookShelf: BookShelf?, searchText: String?) -> BookShelf?
+    func getUpdatedTableViewData(bookShelf: BookShelf?) -> BookShelf?
     {
         var booksData: BookShelf? = nil
-        let commonProperty = CommonProperty()
-        usersData = commonProperty.retrieveAndDecodeStoredUsersData()
-        if let user = usersData.first(where: {$0.userID == username})
-            {
+        if let user = user
+        {
             if var bookShelf = bookShelf {
-            let books = bookShelf.books.filter { book in
-               return user.bookInCartArray.contains(book.id)
-            }
-            bookShelf.books = books
-            booksData = bookShelf
+                let books = bookShelf.books.filter { book in
+                    return user.bookInCartArray.contains(book.id)
+                }
+                bookShelf.books = books
+                booksData = bookShelf
             }
             
         }

@@ -37,19 +37,21 @@ class SearchViewData: CommonProperty {
 
 class CommonTableViewCell: CommonProperty {
     
-    func commonTableViewCellDefaultSetting(btnAddToCart: UIButton, btnBorrow: UIButton, btnRemove: UIButton, btnPreview: UIButton) {
+    func commonTableViewCellDefaultSetting(btnAddToCart: UIButton, btnBorrow: UIButton, btnRemove: UIButton, btnPreview: UIButton, btnReturn: UIButton) {
         setDefaultCustomButtonSettings(btnAddToCart)
         setDefaultCustomButtonSettings(btnBorrow)
         setDefaultCustomButtonSettings(btnRemove)
         setDefaultCustomButtonSettings(btnPreview)
+        setDefaultCustomButtonSettings(btnReturn)
     }
 }
 
 class DetailViewData: CommonProperty {
     
-    func detailViewDefaultSetting (btnAddToCart: UIButton, btnBorrow: UIButton, btnReturn: UIButton) {
+    func detailViewDefaultSetting (btnAddToCart: UIButton, btnBorrow: UIButton, btnReturn: UIButton, btnRemoveFromCart: UIButton) {
         setDefaultCustomButtonSettings(btnAddToCart)
         setDefaultCustomButtonSettings(btnBorrow)
         setDefaultCustomButtonSettings(btnReturn)
+        setDefaultCustomButtonSettings(btnRemoveFromCart)
     }
 }

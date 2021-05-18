@@ -52,7 +52,11 @@ class EnquiryViewController: UIViewController {
         submitButton.layer.borderColor = UIColor.white.cgColor
         submitButton.layer.cornerRadius = 10
     }
-
+    // This delegate method for UITextField
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {      //allows pop-up keyboard to close when pressing enter
+        self.view.endEditing(true)
+        return true
+    }
 
     @IBAction func submitEnquiry(_ sender: Any) {
         var alert = UIAlertController(title: "Warning", message: "", preferredStyle: .alert)

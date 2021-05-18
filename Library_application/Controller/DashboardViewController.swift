@@ -11,6 +11,10 @@ import Foundation
 import UIKit
 
 class DashboardViewController: UIViewController, cellCommunicateDelegate, UITableViewDelegate, UITableViewDataSource  {
+    func returnBookTapped(at index: IndexPath) {
+        
+    }
+    
     
     
     func addToCartTapped(at index: IndexPath) {

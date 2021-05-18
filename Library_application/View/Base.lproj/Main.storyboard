@@ -164,6 +164,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="bCc-CF-dE7" id="HkO-0c-8np"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Got Enquiry? Ask Now!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLP-MA-Jnj">
                                 <rect key="frame" x="48" y="197" width="267" height="33"/>
@@ -177,6 +180,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="bCc-CF-dE7" id="Dw6-nl-qvD"/>
+                                </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Say something...." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PQW-pV-tpy">
                                 <rect key="frame" x="37" y="331" width="341" height="234"/>
@@ -185,6 +191,9 @@
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="bCc-CF-dE7" id="TTM-5u-tUr"/>
+                                </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7n1-vd-Cil">
                                 <rect key="frame" x="235" y="600" width="143" height="51"/>
@@ -527,12 +536,38 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="txc-Ld-vCL" userLabel="Title and Toolbar Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library Application" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToI-Zf-jvT" userLabel="Title">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5f-V7-I2i" userLabel="Title View">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                        <fontDescription key="fontDescription" name="NBInternationalRegularWebfont" family="NB International" pointSize="20"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UTS Library Application" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToI-Zf-jvT" userLabel="Title">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                                <fontDescription key="fontDescription" name="NBInternationalRegularWebfont" family="NB International" pointSize="20"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHj-ps-sQq">
+                                                                <rect key="frame" x="373" y="10" width="21" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" image="power" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="onClickOfLogout:" destination="LLm-pb-rzS" eventType="touchUpInside" id="XhW-M2-0rT"/>
+                                                                    <action selector="onClickOfLogout:" destination="MSz-hD-4iD" eventType="touchUpInside" id="jM4-uR-8Ue"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="yHj-ps-sQq" firstAttribute="centerY" secondItem="e5f-V7-I2i" secondAttribute="centerY" id="27Z-Q4-OOx"/>
+                                                            <constraint firstItem="yHj-ps-sQq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e5f-V7-I2i" secondAttribute="leading" constant="20" symbolic="YES" id="4Cr-TG-34Q"/>
+                                                            <constraint firstAttribute="bottom" secondItem="ToI-Zf-jvT" secondAttribute="bottom" id="GKX-Zs-3Op"/>
+                                                            <constraint firstItem="ToI-Zf-jvT" firstAttribute="top" secondItem="e5f-V7-I2i" secondAttribute="top" id="Xza-J0-o5H"/>
+                                                            <constraint firstAttribute="trailing" secondItem="yHj-ps-sQq" secondAttribute="trailing" constant="20" id="ZVI-Aj-dte"/>
+                                                            <constraint firstAttribute="trailing" secondItem="ToI-Zf-jvT" secondAttribute="trailing" id="cKq-pW-bPO"/>
+                                                            <constraint firstItem="ToI-Zf-jvT" firstAttribute="leading" secondItem="e5f-V7-I2i" secondAttribute="leading" id="vEZ-DG-oRw"/>
+                                                        </constraints>
+                                                    </view>
                                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5v-pO-EnG">
                                                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                                         <constraints>
@@ -543,28 +578,29 @@
                                                             <barButtonItem title="Dashboard" id="abr-ni-aFr">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
-                                                                    <action selector="navigateDashboard:" destination="LLm-pb-rzS" id="nD5-Wg-WpK"/>
+                                                                    <segue destination="KR1-Sd-VDR" kind="presentation" identifier="goToDashboardFromSearchView" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="MPz-oH-TCA"/>
                                                                 </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="aLY-SJ-api"/>
                                                             <barButtonItem title="Search" id="g8n-9o-7AQ">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
-                                                                    <action selector="navigateSearch:" destination="LLm-pb-rzS" id="4LL-Hx-3H2"/>
+                                                                    <action selector="onClickOfSearch:" destination="LLm-pb-rzS" id="5uu-F9-Eyp"/>
+                                                                    <segue destination="LLm-pb-rzS" kind="presentation" identifier="goToSearchFromSearchView" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="mux-t4-3Dn"/>
                                                                 </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="NNy-3y-uci"/>
                                                             <barButtonItem title="Check Out" id="D43-Hu-hrw">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
-                                                                    <action selector="navigateCheckout:" destination="LLm-pb-rzS" id="gHE-SR-C6C"/>
+                                                                    <segue destination="8hB-xu-JZU" kind="presentation" identifier="goToCheckoutFromSearchView" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="pSp-Gi-pm6"/>
                                                                 </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="yVw-qO-2d0"/>
                                                             <barButtonItem title="Enquiry" id="TQc-sp-XK6">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
-                                                                    <action selector="navigateEnquiry:" destination="LLm-pb-rzS" id="JAd-GH-AJL"/>
+                                                                    <segue destination="bCc-CF-dE7" kind="presentation" identifier="goToEnquiryFromSearchView" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="fZm-FC-i1H"/>
                                                                 </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="hjf-Fb-3eJ"/>
@@ -674,6 +710,7 @@
                     <navigationItem key="navigationItem" id="LMT-bp-z6N"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="btnLogout" destination="yHj-ps-sQq" id="o8e-aJ-tJX"/>
                         <outlet property="lblResult" destination="vyU-VX-zSd" id="Eiz-fP-9Vz"/>
                         <outlet property="searchBarSearchBooks" destination="izJ-Ut-5Oa" id="bZQ-MU-cRl"/>
                         <outlet property="tableViewBooks" destination="N4M-h5-AQm" id="eJD-9q-whk"/>
@@ -741,32 +778,28 @@
                                                             <barButtonItem title="Dashboard" id="oke-3r-FUS">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
-                                                                    <action selector="navigateDashboard:" destination="LLm-pb-rzS" id="EmC-Op-C5Y"/>
-                                                                    <segue destination="KR1-Sd-VDR" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="eG5-h1-JYZ"/>
+                                                                    <segue destination="KR1-Sd-VDR" kind="presentation" identifier="goToDashboardFromDetailsView" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="eG5-h1-JYZ"/>
                                                                 </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="Htz-vE-v6a"/>
                                                             <barButtonItem title="Search" id="RgE-bu-P8F">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
-                                                                    <action selector="navigateSearch:" destination="LLm-pb-rzS" id="O1A-jn-VN3"/>
-                                                                    <segue destination="LLm-pb-rzS" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="1vD-RU-O2F"/>
+                                                                    <segue destination="LLm-pb-rzS" kind="presentation" identifier="goToSearchViewFromDetailsView" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="1vD-RU-O2F"/>
                                                                 </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="uJC-6o-MGG"/>
                                                             <barButtonItem title="Check Out" id="ArK-Vb-YX5">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
-                                                                    <action selector="navigateCheckout:" destination="LLm-pb-rzS" id="AlN-W7-EOZ"/>
-                                                                    <segue destination="8hB-xu-JZU" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="HJt-Kt-mIs"/>
+                                                                    <segue destination="8hB-xu-JZU" kind="presentation" identifier="goToCheckoutFromDetailsView" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="HJt-Kt-mIs"/>
                                                                 </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="UuP-uh-ens"/>
                                                             <barButtonItem title="Enquiry" id="xs3-KW-ia9">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <connections>
-                                                                    <action selector="navigateEnquiry:" destination="LLm-pb-rzS" id="RBr-3R-yqc"/>
-                                                                    <segue destination="bCc-CF-dE7" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="X54-o6-hIi"/>
+                                                                    <segue destination="bCc-CF-dE7" kind="presentation" identifier="goToEnquiryFromDetailsView" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="X54-o6-hIi"/>
                                                                 </connections>
                                                             </barButtonItem>
                                                             <barButtonItem style="plain" systemItem="flexibleSpace" id="gsN-fD-EvO"/>
@@ -818,11 +851,11 @@
                                                                                     <constraint firstItem="dA2-oq-mXk" firstAttribute="leading" secondItem="Xv8-QU-KyO" secondAttribute="leading" id="O4S-Bh-dWw"/>
                                                                                 </constraints>
                                                                             </stackView>
-                                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oEO-I3-5Hy">
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="oEO-I3-5Hy">
                                                                                 <rect key="frame" x="0.0" y="56" width="374" height="55.5"/>
                                                                                 <subviews>
                                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRD-GC-zyG">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="124.5" height="55.5"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="55.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                                         <state key="normal" title="Add to Cart"/>
                                                                                         <connections>
@@ -830,7 +863,7 @@
                                                                                         </connections>
                                                                                     </button>
                                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMB-41-jXj">
-                                                                                        <rect key="frame" x="124.5" y="0.0" width="125" height="55.5"/>
+                                                                                        <rect key="frame" x="95" y="0.0" width="89.5" height="55.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                                         <state key="normal" title="Borrow"/>
                                                                                         <connections>
@@ -838,11 +871,19 @@
                                                                                         </connections>
                                                                                     </button>
                                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyq-tx-Oai">
-                                                                                        <rect key="frame" x="249.5" y="0.0" width="124.5" height="55.5"/>
+                                                                                        <rect key="frame" x="189.5" y="0.0" width="90" height="55.5"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                                         <state key="normal" title="Return"/>
                                                                                         <connections>
                                                                                             <action selector="onClickOfReturn:" destination="MSz-hD-4iD" eventType="touchUpInside" id="iSS-78-oy6"/>
+                                                                                        </connections>
+                                                                                    </button>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CRC-LB-QuA">
+                                                                                        <rect key="frame" x="284.5" y="0.0" width="89.5" height="55.5"/>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                                        <state key="normal" title="Remove From Cart"/>
+                                                                                        <connections>
+                                                                                            <action selector="onClickOfRemoveFromCart:" destination="MSz-hD-4iD" eventType="touchUpInside" id="2Mc-yO-eCR"/>
                                                                                         </connections>
                                                                                     </button>
                                                                                 </subviews>
@@ -976,6 +1017,7 @@
                         <outlet property="btnAddToCart" destination="sRD-GC-zyG" id="Xyy-Yf-x9W"/>
                         <outlet property="btnBorrow" destination="vMB-41-jXj" id="Drm-7V-uRe"/>
                         <outlet property="btnLogout" destination="yvp-h7-je8" id="UPK-H7-97S"/>
+                        <outlet property="btnRemoveFromCart" destination="CRC-LB-QuA" id="xmD-yZ-XJb"/>
                         <outlet property="btnReturn" destination="Pyq-tx-Oai" id="MI3-TW-tAc"/>
                         <outlet property="imgBookCoverPage" destination="aXM-8u-SJi" id="JrU-QD-enG"/>
                         <outlet property="lblAuthor" destination="OD2-T3-a36" id="slC-NQ-0vw"/>
@@ -1022,65 +1064,76 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xwH-hl-ywv">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pcy-0E-Wyw" userLabel="Title and Toolbar View">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDH-YT-422" userLabel="Title and Toolbar View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hni-dR-lie" userLabel="Title and Toolbar Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="TRg-DX-bhO" userLabel="Title and Toolbar Stack View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library Application" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHZ-Mg-T7V" userLabel="Title">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ynK-Og-RRc" userLabel="Title View">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                                        <color key="backgroundColor" red="0.0" green="0.25720244650000001" blue="0.75021028519999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" name="NBInternationalRegularWebfont" family="NB International" pointSize="20"/>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRh-kh-7Ea">
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qit-VW-zLH">
+                                                                <rect key="frame" x="373" y="10" width="21" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" image="power" catalog="system">
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="onClickOfLogout:" destination="MSz-hD-4iD" eventType="touchUpInside" id="Pdw-FF-Xar"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UTS Library Application" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ga-rM-SyE" userLabel="Title">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="qit-VW-zLH" firstAttribute="centerY" secondItem="ynK-Og-RRc" secondAttribute="centerY" id="NXk-sO-g9a"/>
+                                                            <constraint firstItem="3ga-rM-SyE" firstAttribute="leading" secondItem="ynK-Og-RRc" secondAttribute="leading" id="djA-gt-QDs"/>
+                                                            <constraint firstAttribute="trailing" secondItem="3ga-rM-SyE" secondAttribute="trailing" id="fUW-Go-vjD"/>
+                                                            <constraint firstItem="3ga-rM-SyE" firstAttribute="top" secondItem="ynK-Og-RRc" secondAttribute="top" id="gZN-hX-xhT"/>
+                                                            <constraint firstItem="qit-VW-zLH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ynK-Og-RRc" secondAttribute="leading" constant="20" symbolic="YES" id="nxU-jh-e7S"/>
+                                                            <constraint firstAttribute="bottom" secondItem="3ga-rM-SyE" secondAttribute="bottom" id="qpF-NX-Yfq"/>
+                                                            <constraint firstAttribute="trailing" secondItem="qit-VW-zLH" secondAttribute="trailing" constant="20" id="tfN-hY-wZB"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UiU-gb-1Kz">
                                                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="Fmz-5E-fVf"/>
+                                                            <constraint firstAttribute="height" constant="44" id="D1E-fx-3Jh"/>
                                                         </constraints>
                                                         <items>
-                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="yFS-Ab-JrO"/>
-                                                            <barButtonItem title="Dashboard" id="VsT-f0-aOY">
+                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="37y-yW-d0v"/>
+                                                            <barButtonItem title="Dashboard" id="VP3-JW-DEe">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <connections>
-                                                                    <action selector="navigateDashboard:" destination="8hB-xu-JZU" id="cw9-2h-iYA"/>
-                                                                </connections>
                                                             </barButtonItem>
-                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="i02-3c-hh2"/>
-                                                            <barButtonItem title="Search" id="hz9-h7-RTJ">
+                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="a4W-RX-st1"/>
+                                                            <barButtonItem title="Search" id="70q-Uk-8c4">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <connections>
-                                                                    <action selector="navigateSearch:" destination="8hB-xu-JZU" id="yCh-Km-0e5"/>
-                                                                </connections>
                                                             </barButtonItem>
-                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="adb-zK-cCN"/>
-                                                            <barButtonItem title="Check Out" id="3Oc-SF-nMr">
+                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="wQ7-k8-Ta7"/>
+                                                            <barButtonItem title="Check Out" id="uLr-mk-QBq">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <connections>
-                                                                    <action selector="navigateCheckout:" destination="8hB-xu-JZU" id="G6G-JD-ZGZ"/>
-                                                                </connections>
                                                             </barButtonItem>
-                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="I3q-e5-puY"/>
-                                                            <barButtonItem title="Enquiry" id="KWx-96-QnB">
+                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="fIH-OS-696"/>
+                                                            <barButtonItem title="Enquiry" id="fkz-4J-r6d">
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <connections>
-                                                                    <action selector="navigateEnquiry:" destination="8hB-xu-JZU" id="Ano-xl-2Fr"/>
-                                                                </connections>
                                                             </barButtonItem>
-                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="dSa-iG-52f"/>
+                                                            <barButtonItem style="plain" systemItem="flexibleSpace" id="mou-yH-1F5"/>
                                                         </items>
                                                     </toolbar>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="hni-dR-lie" secondAttribute="trailing" id="JWm-yT-bRn"/>
-                                            <constraint firstItem="hni-dR-lie" firstAttribute="leading" secondItem="Pcy-0E-Wyw" secondAttribute="leading" id="SBI-5z-Tp5"/>
-                                            <constraint firstItem="hni-dR-lie" firstAttribute="top" secondItem="Pcy-0E-Wyw" secondAttribute="top" id="fSE-vK-HnI"/>
-                                            <constraint firstAttribute="height" constant="88" id="gpK-EM-0YW"/>
-                                            <constraint firstAttribute="bottom" secondItem="hni-dR-lie" secondAttribute="bottom" id="uXD-9n-wo8"/>
+                                            <constraint firstAttribute="bottom" secondItem="TRg-DX-bhO" secondAttribute="bottom" id="47R-R1-oNC"/>
+                                            <constraint firstAttribute="trailing" secondItem="TRg-DX-bhO" secondAttribute="trailing" id="FyS-gQ-qIe"/>
+                                            <constraint firstItem="TRg-DX-bhO" firstAttribute="leading" secondItem="oDH-YT-422" secondAttribute="leading" id="Udn-w9-SDB"/>
+                                            <constraint firstItem="TRg-DX-bhO" firstAttribute="top" secondItem="oDH-YT-422" secondAttribute="top" id="vke-Q4-j2H"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AP-9I-BkI" userLabel="Books View">
@@ -1157,8 +1210,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="HJt-Kt-mIs"/>
         <segue reference="1vD-RU-O2F"/>
-        <segue reference="hQ4-3c-O9B"/>
+        <segue reference="eG5-h1-JYZ"/>
+        <segue reference="X54-o6-hIi"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="UTS_Logo" width="959" height="512"/>

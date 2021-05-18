@@ -31,13 +31,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var btnAddToCart: UIButton!
     @IBOutlet weak var btnBorrow: UIButton!
     @IBOutlet weak var btnReturn: UIButton!
+    @IBOutlet weak var btnRemoveFromCart: UIButton!
     @IBOutlet weak var btnLogout: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        detailViewData.detailViewDefaultSetting(btnAddToCart: btnAddToCart, btnBorrow: btnBorrow, btnReturn: btnReturn)
+        detailViewData.detailViewDefaultSetting(btnAddToCart: btnAddToCart, btnBorrow: btnBorrow, btnReturn: btnReturn, btnRemoveFromCart: btnRemoveFromCart)
         
         if let bookShelf = bookShelf {
             if let book = bookShelf.books.first(where: {$0.id == bookId}) {
@@ -53,6 +54,7 @@ class DetailViewController: UIViewController {
                             btnAddToCart.isHidden = true
                             btnBorrow.isHidden = false
                             btnReturn.isHidden = true
+                            btnRemoveFromCart.isHidden = false
                         } else if user.bookBorrowedArray.keys.contains(book.id) {
                             lblDueDate.isHidden = false
                             
@@ -70,6 +72,7 @@ class DetailViewController: UIViewController {
                             btnAddToCart.isHidden = true
                             btnBorrow.isHidden = true
                             btnReturn.isHidden = false
+                            btnRemoveFromCart.isHidden = true
                         } else {
                             lblStatus.text = "Available"
                             lblStatus.textColor = UIColor.systemGreen
@@ -77,6 +80,7 @@ class DetailViewController: UIViewController {
                             btnAddToCart.isHidden = false
                             btnBorrow.isHidden = true
                             btnReturn.isHidden = true
+                            btnRemoveFromCart.isHidden = true
                         }
                     }
                 }
@@ -84,6 +88,24 @@ class DetailViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToDashboardFromDetailsView" {
+            let destinationVC = segue.destination as! DashboardViewController
+            destinationVC.username = username
+        }
+        if segue.identifier == "goToSearchViewFromDetailsView" {
+            let destinationVC = segue.destination as! SearchViewController
+            destinationVC.username = username
+        }
+        if segue.identifier == "goToCheckoutFromDetailsView" {
+            let destinationVC = segue.destination as! CheckoutViewController
+            destinationVC.username = username
+        }
+        if segue.identifier == "goToEnquiryFromDetailsView" {
+            let destinationVC = segue.destination as! EnquiryViewController
+            destinationVC.username = username
+        }
+    }
     
     
     @IBAction func onClickOfAddToCart(_ sender: UIButton) {
@@ -101,7 +123,7 @@ class DetailViewController: UIViewController {
             usersData.append(user)
             detailViewData.encodeAndStoreUsersData(usersData: usersData)
             
-            openDialog(title: "In Cart", description: "Book is added to your Cart.", image: UIImage(named: "bookCart.png")!)
+            openDialog(title: "Book Added", description: "Book is added to your Cart.", image: UIImage(named: "bookCart.png")!)
         }
         
     }
@@ -118,7 +140,7 @@ class DetailViewController: UIViewController {
             lblDueDate.text = "Due: \(detailViewData.getFormattedDateString(dueDate!))"
             
             if user.bookInCartArray.contains(bookId) { user.bookInCartArray.remove(at: (user.bookInCartArray as NSArray).index(of: bookId))}
-
+            
             lblStatus.text = "Borrowed"
             lblStatus.textColor = appColor
             lblDueDate.isHidden = false
@@ -151,25 +173,47 @@ class DetailViewController: UIViewController {
             usersData.remove(at: usersData.firstIndex(where: {$0.userID == user.userID})!)
             usersData.append(user)
             detailViewData.encodeAndStoreUsersData(usersData: usersData)
-
+            
             openDialog(title: "Book Returned", description: "Contact librarian for confirmation.", image: UIImage(named: "wecomeLogo.png")!)
         }
     }
     
     
+    @IBAction func onClickOfRemoveFromCart(_ sender: UIButton) {
+        if let user = user {
+            if user.bookInCartArray.contains(bookId) { user.bookInCartArray.remove(at: (user.bookInCartArray as NSArray).index(of: bookId))}
+            if user.bookBorrowedArray.keys.contains(bookId) { user.bookBorrowedArray[bookId] = nil }
+            
+            lblStatus.text = "Available"
+            lblStatus.textColor = UIColor.systemGreen
+            lblDueDate.isHidden = true
+            btnAddToCart.isHidden = false
+            btnBorrow.isHidden = true
+            btnReturn.isHidden = true
+            btnRemoveFromCart.isHidden = true
+            
+            usersData.remove(at: usersData.firstIndex(where: {$0.userID == user.userID})!)
+            usersData.append(user)
+            detailViewData.encodeAndStoreUsersData(usersData: usersData)
+            
+            openDialog(title: "Book Removed", description: "Book is removed from your Cart.", image: UIImage(named: "bookCart.png")!)
+
+        }
+    }
     
     @IBAction func onClickOfLogout(_ sender: UIButton) {
         let alertVC = PMAlertController(title: "Confirm Logout", description: "Are you sure you want to logout?", image: UIImage(named: "Logout.jpg"), style: .alert)
-
+        
         alertVC.addAction(PMAlertAction(title: "Cancel", style: .cancel, action: {}))
-
+        
         alertVC.addAction(PMAlertAction(title: "OK", style: .default, action: { () in
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
             nextViewController.modalPresentationStyle = .fullScreen
+            nextViewController.modalTransitionStyle = .crossDissolve
             self.present(nextViewController, animated: true)
-                }))
-
+        }))
+        
         self.present(alertVC, animated: true, completion: nil)
     }
     
