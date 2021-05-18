@@ -11,6 +11,12 @@ import UIKit
 class SearchViewController: UIViewController, cellCommunicateDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
     func viewPreviewTapped(at index: IndexPath) {
+        let selectedBookID = (tableViewBooks.cellForRow(at: index) as! SearchTableViewCell).lblISBN.text
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                           let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        nextViewController.username = "13736626"//self.username
+        nextViewController.bookId = selectedBookID!
+        self.present(nextViewController, animated: true)
         
     }
     
@@ -72,13 +78,8 @@ class SearchViewController: UIViewController, cellCommunicateDelegate, UISearchB
         let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)
         tableViewBooks.register(nib, forCellReuseIdentifier: "SearchTableViewCell")
         
-        searchBarSearchBooks.searchTextField.clearButton?.addTarget(self, action: #selector(onClickOfClearBtn), for: .touchUpInside)
     }
     
-    @objc func onClickOfClearBtn(_ sender: UIButton) {
-        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchTextInput)
-        tableViewBooks.reloadData()
-    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
@@ -86,7 +87,6 @@ class SearchViewController: UIViewController, cellCommunicateDelegate, UISearchB
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         
         let inputString = searchText.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
         

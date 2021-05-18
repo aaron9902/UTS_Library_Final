@@ -8,12 +8,15 @@
 import UIKit
 
 var usersData = [UserData]()
+var bookShelf : BookShelf? = nil
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
    // var userData = UserData(userID: String(), userPassword: String(), bookBorrowedArray: [String](), bookInCartArray: [String]())
     let commonProperty = CommonProperty()
+    let bookShelfManager = BookShelfManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -24,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             usersData.append(contentsOf: [user1,user2])
             commonProperty.encodeAndStoreUsersData(usersData: usersData)
         }
+        
+        bookShelf = bookShelfManager.fetchBooks()
         
         return true
     }

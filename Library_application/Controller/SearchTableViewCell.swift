@@ -15,6 +15,7 @@ protocol cellCommunicateDelegate{
 }
 
 class SearchTableViewCell: UITableViewCell {
+    let commonTableViewCell = CommonTableViewCell()
 
     @IBOutlet weak var imgViewBook: UIImageView!
     @IBOutlet weak var lblBookTitle: UILabel!
@@ -47,6 +48,7 @@ class SearchTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        commonTableViewCell.commonTableViewCellDefaultSetting(btnAddToCart: btnAddToCart, btnBorrow: btnBorrow, btnRemove: btnRemove, btnPreview: btnPreview)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

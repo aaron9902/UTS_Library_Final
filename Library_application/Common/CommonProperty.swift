@@ -67,5 +67,20 @@ class CommonProperty {
             defaults.set(encodedScores, forKey: "usersData")
         }
     }
-
+    
+    func getFormattedDateString(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY"
+        return dateFormatter.string(from: date)
+    }
+    
+    func getFormattedDate(_ date: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/YYYY"
+        return dateFormatter.date(from: date)!
+    }
+    
+    func getDifferenceInDaysWithCurrentDate(_ date: String) -> Int {
+        return Int(Date().timeIntervalSince(getFormattedDate(date)) / (60 * 60 * 24 ))
+    }
 }

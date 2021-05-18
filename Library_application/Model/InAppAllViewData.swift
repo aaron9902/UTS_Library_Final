@@ -27,16 +27,29 @@ class LoginViewData: CommonProperty {
 }
 
 class SearchViewData: CommonProperty {
-    
-    let emptyTitle = "Username or Password is Empty"
-    let emptyDescription = "Please enter your username and password."
-    
-    let invalidTitle = "Username or Password is Invalid"
-    let invalidDescription = "Please enter your valid username and password."
-        
+            
     func searchViewcommonDefaultSetting(tableViewBooks: UITableView, searchBarSearchBooks: UISearchBar, lblResult: UILabel) {
         setDefaultCustomTableViewSettings(tableViewBooks)
         setDefaultCustomSearchBarSettings(searchBarSearchBooks)
         setDefaultCustomLabelSettings(lblResult)
+    }
+}
+
+class CommonTableViewCell: CommonProperty {
+    
+    func commonTableViewCellDefaultSetting(btnAddToCart: UIButton, btnBorrow: UIButton, btnRemove: UIButton, btnPreview: UIButton) {
+        setDefaultCustomButtonSettings(btnAddToCart)
+        setDefaultCustomButtonSettings(btnBorrow)
+        setDefaultCustomButtonSettings(btnRemove)
+        setDefaultCustomButtonSettings(btnPreview)
+    }
+}
+
+class DetailViewData: CommonProperty {
+    
+    func detailViewDefaultSetting (btnAddToCart: UIButton, btnBorrow: UIButton, btnReturn: UIButton) {
+        setDefaultCustomButtonSettings(btnAddToCart)
+        setDefaultCustomButtonSettings(btnBorrow)
+        setDefaultCustomButtonSettings(btnReturn)
     }
 }
