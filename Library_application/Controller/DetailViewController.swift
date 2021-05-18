@@ -97,7 +97,7 @@ class DetailViewController: UIViewController {
             btnBorrow.isHidden = false
             btnReturn.isHidden = true
             
-            usersData.remove(at: (usersData as NSArray).index(of: user))
+            usersData.remove(at: usersData.firstIndex(where: {$0.userID == user.userID})!)
             usersData.append(user)
             detailViewData.encodeAndStoreUsersData(usersData: usersData)
             
@@ -109,34 +109,69 @@ class DetailViewController: UIViewController {
     
     @IBAction func onClickOfBorrow(_ sender: UIButton) {
         if let user = user {
-            if user.bookBorrowedArray.keys.contains(bookId) { user.bookBorrowedArray[bookId] = Date() }
-            if !user.bookInCartArray.contains(bookId) { user.bookInCartArray.append(bookId) }
-            if user.bookBorrowedArray.keys.contains(bookId) { user.bookBorrowedArray[bookId] = nil }
-            lblStatus.text = "In Cart"
-            lblStatus.textColor = UIColor.systemYellow
-            lblDueDate.isHidden = true
-            btnAddToCart.isHidden = true
-            btnBorrow.isHidden = false
-            btnReturn.isHidden = true
             
-            usersData.remove(at: (usersData as NSArray).index(of: user))
+            var dayComponent = DateComponents()
+            dayComponent.day = 7
+            let dueDate = Calendar.current.date(byAdding: dayComponent, to: Date())
+            if user.bookBorrowedArray.keys.contains(bookId) { user.bookBorrowedArray[bookId] = dueDate }
+            else { user.bookBorrowedArray[bookId] = dueDate }
+            lblDueDate.text = "Due: \(detailViewData.getFormattedDateString(dueDate!))"
+            
+            if user.bookInCartArray.contains(bookId) { user.bookInCartArray.remove(at: (user.bookInCartArray as NSArray).index(of: bookId))}
+
+            lblStatus.text = "Borrowed"
+            lblStatus.textColor = appColor
+            lblDueDate.isHidden = false
+            btnAddToCart.isHidden = true
+            btnBorrow.isHidden = true
+            btnReturn.isHidden = false
+            
+            usersData.remove(at: usersData.firstIndex(where: {$0.userID == user.userID})!)
             usersData.append(user)
             detailViewData.encodeAndStoreUsersData(usersData: usersData)
             
-            openDialog(title: "In Cart", description: "Book is added to your Cart.", image: UIImage(named: "bookCart.png")!)
+            openDialog(title: "Book Borrowed", description: "Return within 7 days to avoid dues.", image: UIImage(named: "borrowedBook.png")!)
         }
     }
     
     
     
     @IBAction func onClickOfReturn(_ sender: UIButton) {
+        if let user = user {
+            if user.bookInCartArray.contains(bookId) { user.bookInCartArray.remove(at: (user.bookInCartArray as NSArray).index(of: bookId))}
+            if user.bookBorrowedArray.keys.contains(bookId) { user.bookBorrowedArray[bookId] = nil }
+            
+            lblStatus.text = "Available"
+            lblStatus.textColor = UIColor.systemGreen
+            lblDueDate.isHidden = true
+            btnAddToCart.isHidden = false
+            btnBorrow.isHidden = true
+            btnReturn.isHidden = true
+            
+            usersData.remove(at: usersData.firstIndex(where: {$0.userID == user.userID})!)
+            usersData.append(user)
+            detailViewData.encodeAndStoreUsersData(usersData: usersData)
+
+            openDialog(title: "Book Returned", description: "Contact librarian for confirmation.", image: UIImage(named: "wecomeLogo.png")!)
+        }
     }
     
     
     
-    
-    
-    
+    @IBAction func onClickOfLogout(_ sender: UIButton) {
+        let alertVC = PMAlertController(title: "Confirm Logout", description: "Are you sure you want to logout?", image: UIImage(named: "Logout.jpg"), style: .alert)
+
+        alertVC.addAction(PMAlertAction(title: "Cancel", style: .cancel, action: {}))
+
+        alertVC.addAction(PMAlertAction(title: "OK", style: .default, action: { () in
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            nextViewController.modalPresentationStyle = .fullScreen
+            self.present(nextViewController, animated: true)
+                }))
+
+        self.present(alertVC, animated: true, completion: nil)
+    }
     
     func setBookDataToView(_ book: Book) {
         imgBookCoverPage.image = UIImage(named: "\(book.id).jpg")!
