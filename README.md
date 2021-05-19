@@ -9,9 +9,13 @@ Presentation Slide link - https://studentutsedu.sharepoint.com/:p:/s/IOSGroupAss
 Development Team members
 
 13736626 Mehul Makwana
+
 14085930 Nilofar Parveen Raj Mohamed
+
 13871393 Andy(Weihao) Zhang
+
 13275348 Hyungju Lee
+
 
 1. Login
 This application's login password is 1234 and you can use one of our student ID as a Login ID.  ex) ID: 13275348 PW:1234
