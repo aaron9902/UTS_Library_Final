@@ -54,4 +54,12 @@ class DetailViewData: CommonProperty {
         setDefaultCustomButtonSettings(btnReturn)
         setDefaultCustomButtonSettings(btnRemoveFromCart)
     }
+    
+}
+    
+    class EnquiryViewData: CommonProperty {
+        
+        func enquiryViewDefaultSetting (btnSubmit: UIButton) {
+            setDefaultCustomButtonSettings(btnSubmit)
+        }
 }

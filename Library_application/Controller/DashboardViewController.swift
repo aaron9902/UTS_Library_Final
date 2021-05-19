@@ -29,6 +29,7 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
         
     }
     
+    @IBOutlet weak var btnDashboard: UIBarButtonItem!
     
     @IBOutlet weak var tableViewBooks: UITableView!
     @IBOutlet weak var welcomeName : UILabel!
@@ -42,7 +43,46 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
     var tableViewBooksData: BookShelf? = nil
     var searchText: String? = nil
     var username = ""
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "segueDashboardToSearch" )
+        {
+            let destinationController = segue.destination as! SearchViewController
+            destinationController.username = self.username;
+        }
+        if(segue.identifier == "segueDashboardToCheckout" )
+        {
+            let destinationController = segue.destination as! CheckoutViewController
+            destinationController.username = self.username;
+        }
+        if(segue.identifier == "segueDashboardToEnquiry" )
+        {
+            let destinationController = segue.destination as! EnquiryViewController
+            destinationController.username = self.username;
+        }
+        if(segue.identifier == "segueDashboardRefresh" )
+        {
+            let destinationController = segue.destination as! DashboardViewController
+            destinationController.username = self.username;
+        }
+    }
             
+    @IBAction func logoutClicked(_ sender: Any) {
+        let alertVC = PMAlertController(title: "Confirm Logout", description: "Are you sure you want to logout?", image: UIImage(named: "Logout.jpg"), style: .alert)
+        
+        alertVC.addAction(PMAlertAction(title: "Cancel", style: .cancel, action: {}))
+        
+        alertVC.addAction(PMAlertAction(title: "OK", style: .default, action: { () in
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            nextViewController.modalPresentationStyle = .fullScreen
+            nextViewController.modalTransitionStyle = .crossDissolve
+            self.present(nextViewController, animated: true)
+        }))
+        
+        self.present(alertVC, animated: true, completion: nil)
+
+    }
     @IBAction func overdueClicked(_ sender: Any) {
         dueStack.backgroundColor = UIColor.blue
         borrowStack.backgroundColor = UIColor.black
@@ -51,35 +91,10 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
         tableViewBooks.reloadData()
         dueCount.text = String((tableViewBooksData?.books.count)!)
     }
-    //Toolbar programatical navigation
-    @IBAction func navigateDashboard(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
-        nextViewController.username = self.username
-        self.present(nextViewController, animated: true)
-    }
-    @IBAction func navigateSearch(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-        nextViewController.username = self.username
-        self.present(nextViewController, animated: true)
-    }
-    @IBAction func navigateCheckout(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
-        nextViewController.username = self.username
-        self.present(nextViewController, animated: true)
-    }
-    
-    @IBAction func navigateEnquiry(_ sender: Any) {
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EnquiryViewController") as! EnquiryViewController
-            nextViewController.username = self.username
-        self.present(nextViewController, animated: true)
-        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnDashboard.tintColor = UIColor.init(red: 255.0/255.0, green: 35.0/255.0, blue: 5.0/255.0, alpha: 1.0)
         welcomeName.text = username
         bookShelf = bookShelfManager.fetchBooks()
         tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchText)

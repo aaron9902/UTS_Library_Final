@@ -16,6 +16,7 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
     func returnBookTapped(at index: IndexPath) {
     }
     
+    @IBOutlet weak var btnCheckout: UIBarButtonItem!
     
     func viewPreviewTapped(at index: IndexPath) {
         let selectedBookID = (tableViewBooks.cellForRow(at: index) as! SearchTableViewCell).lblISBN.text
@@ -39,6 +40,46 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
             usersData.append(user)
             commonProperty.encodeAndStoreUsersData(usersData: usersData)
             openDialog(title: "Book Removed", description: "Book is removed from your Cart.", image: UIImage(named: "bookCart.png")!)
+        }
+    }
+    
+    @IBAction func onClickofLogout(_ sender: Any) {
+        let alertVC = PMAlertController(title: "Confirm Logout", description: "Are you sure you want to logout?", image: UIImage(named: "Logout.jpg"), style: .alert)
+        
+        alertVC.addAction(PMAlertAction(title: "Cancel", style: .cancel, action: {}))
+        
+        alertVC.addAction(PMAlertAction(title: "OK", style: .default, action: { () in
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            nextViewController.modalPresentationStyle = .fullScreen
+            nextViewController.modalTransitionStyle = .crossDissolve
+            self.present(nextViewController, animated: true)
+        }))
+        
+        self.present(alertVC, animated: true, completion: nil)
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "segueCheckoutToDashboard" )
+        {
+            let destinationController = segue.destination as! DashboardViewController
+            destinationController.username = self.username;
+        }
+        if(segue.identifier == "segueCheckoutToSearch" )
+        {
+            let destinationController = segue.destination as! SearchViewController
+            destinationController.username = self.username;
+        }
+        if(segue.identifier == "segueCheckoutToEnquiry" )
+        {
+            let destinationController = segue.destination as! EnquiryViewController
+            destinationController.username = self.username;
+        }
+        if(segue.identifier == "segueCheckoutRefresh" )
+        {
+            let destinationController = segue.destination as! CheckoutViewController
+            destinationController.username = self.username;
         }
     }
     
@@ -73,38 +114,12 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
     var user: UserData? = nil
     let commonProperty = CommonProperty()
     
-    //Toolbar programatical navigation
-    @IBAction func navigateDashboard(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
-        nextViewController.username = self.username
-        self.present(nextViewController, animated: true)
-    }
-    @IBAction func navigateSearch(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
-        nextViewController.username = self.username
-        self.present(nextViewController, animated: true)
-    }
-    @IBAction func navigateCheckout(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "CheckoutViewController") as! CheckoutViewController
-        nextViewController.username = self.username
-        self.present(nextViewController, animated: true)
-    }
-    
-    @IBAction func navigateEnquiry(_ sender: Any) {
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "EnquiryViewController") as! EnquiryViewController
-        nextViewController.username = self.username
-        self.present(nextViewController, animated: true)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        btnCheckout.tintColor = UIColor.init(red: 255.0/255.0, green: 35.0/255.0, blue: 5.0/255.0, alpha: 1.0)
         
         if !usersData.isEmpty {
-            user = usersData.first(where: {$0.userID == "13736626"}) //username
+            user = usersData.first(where: {$0.userID == username})
         }
         //bookShelf = bookShelfManager.fetchBooks()
         tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf)

@@ -13,7 +13,7 @@ class SearchViewController: UIViewController, cellCommunicateDelegate, UISearchB
     
     let searchViewData = SearchViewData()
     var username = ""
-    
+
     @IBOutlet weak var tableViewBooks: UITableView!
     @IBOutlet weak var searchBarSearchBooks: UISearchBar!
     @IBOutlet weak var lblResult: UILabel!

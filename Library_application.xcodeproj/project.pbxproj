@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26CA49C7264BF998006772F1 /* EnquiryConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CA49C6264BF998006772F1 /* EnquiryConfirmationViewController.swift */; };
 		26DDC7A8264BE80F00180980 /* EnquiryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDC7A7264BE80F00180980 /* EnquiryViewController.swift */; };
 		474F9066264E1BF2006E0EFE /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 474F9064264E1BF2006E0EFE /* SearchTableViewCell.xib */; };
 		474F906C264E9410006E0EFE /* books.json in Resources */ = {isa = PBXBuildFile; fileRef = 474F906B264E9410006E0EFE /* books.json */; };
@@ -33,7 +32,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		26CA49C6264BF998006772F1 /* EnquiryConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnquiryConfirmationViewController.swift; sourceTree = "<group>"; };
 		26DDC7A7264BE80F00180980 /* EnquiryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnquiryViewController.swift; sourceTree = "<group>"; };
 		474F9064264E1BF2006E0EFE /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		474F906B264E9410006E0EFE /* books.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = books.json; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				93AD95622647D4E30069571D /* LoginViewController.swift */,
 				932139DA264AA0B0007F32B6 /* DetailViewController.swift */,
 				26DDC7A7264BE80F00180980 /* EnquiryViewController.swift */,
-				26CA49C6264BF998006772F1 /* EnquiryConfirmationViewController.swift */,
 				474F9070264E9F76006E0EFE /* SearchTableViewCell.swift */,
 				54AD4C0C265108DC0058C1AF /* CheckoutViewController.swift */,
 			);
@@ -237,7 +234,6 @@
 				932139E1264AA176007F32B6 /* BookShelfManager.swift in Sources */,
 				47E626E52650DC18004F9C6C /* PMAlertController.swift in Sources */,
 				47E626E32650DC18004F9C6C /* PMAlertAction.swift in Sources */,
-				26CA49C7264BF998006772F1 /* EnquiryConfirmationViewController.swift in Sources */,
 				26DDC7A8264BE80F00180980 /* EnquiryViewController.swift in Sources */,
 				47A8DCC7264DA73F0014A08D /* BookShelf.swift in Sources */,
 				932139D9264A9FBA007F32B6 /* SearchViewController.swift in Sources */,
