@@ -516,16 +516,16 @@
                                                         <rect key="frame" x="0.0" y="170" width="414" height="594"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List of Borrowed Books" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFe-8l-FHB" userLabel="tableHeading">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="94"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qCS-4s-S3l">
-                                                                <rect key="frame" x="0.0" y="94" width="414" height="500"/>
+                                                                <rect key="frame" x="0.0" y="44" width="414" height="550"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="500" id="pFz-2A-tYq"/>
+                                                                    <constraint firstAttribute="height" constant="550" id="pFz-2A-tYq"/>
                                                                 </constraints>
                                                                 <connections>
                                                                     <outlet property="dataSource" destination="7Ge-ZV-MLg" id="1qx-y9-zyM"/>
@@ -537,6 +537,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="qCS-4s-S3l" secondAttribute="trailing" id="SVs-Z4-LPw"/>
                                                             <constraint firstItem="qCS-4s-S3l" firstAttribute="leading" secondItem="7Ge-ZV-MLg" secondAttribute="leading" id="vEO-ip-fit"/>
+                                                            <constraint firstItem="qCS-4s-S3l" firstAttribute="top" secondItem="cFe-8l-FHB" secondAttribute="bottom" id="z3T-5f-XRA"/>
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
@@ -1293,6 +1294,7 @@
                     <navigationItem key="navigationItem" id="c9v-M6-L3Y"/>
                     <connections>
                         <outlet property="btnCheckout" destination="QRx-Ht-Ax4" id="Su5-BH-7kE"/>
+                        <outlet property="headerText" destination="hfF-B6-IRa" id="O39-AI-egB"/>
                         <outlet property="tableViewBooks" destination="ytr-YG-MHt" id="oFv-Mm-qCh"/>
                     </connections>
                 </viewController>
@@ -1304,7 +1306,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="CoM-Mq-QH0"/>
         <segue reference="4L8-jR-AAe"/>
-        <segue reference="Ivz-BM-307"/>
+        <segue reference="iEb-Ok-P6W"/>
         <segue reference="4K9-V2-3df"/>
     </inferredMetricsTieBreakers>
     <resources>

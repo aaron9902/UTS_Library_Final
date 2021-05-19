@@ -110,7 +110,7 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
         self.present(alertVC, animated: true, completion: nil)
 
     }
-    @IBAction func overdueClicked(_ sender: Any) {
+    @IBAction func overdueClicked(_ sender: UIButton) {
         overDueFlag = true
         dueStack.backgroundColor = UIColor.blue
         borrowStack.backgroundColor = UIColor.black
@@ -134,15 +134,13 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
         borrowStack.backgroundColor = UIColor.blue
         let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)
         tableViewBooks.register(nib, forCellReuseIdentifier: "SearchTableViewCell")
-        
-        if (((tableViewBooksData?.books.count)) != nil)
-        {
-            borrowCount.text = String((tableViewBooksData?.books.count)!)
+        if let borrow = getUpdatedTableViewData(bookShelf: bookShelf, overdueFlag: false) {
+            borrowCount.text = String(borrow.books.count)
         }
-        if (((tableViewBooksData?.books.count)) != nil)
-        {
-            dueCount.text = String((tableViewBooksData?.books.count)!)
+        if let overdue = getUpdatedTableViewData(bookShelf: bookShelf, overdueFlag: true) {
+            dueCount.text = String(overdue.books.count)
         }
+
     }
 
     func returnBookTapped(at index: IndexPath) {
@@ -170,7 +168,8 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
     }
     
         
-    @IBAction func onClickBooksBorrowed(_ sender: Any) {
+    @IBAction func onClickBooksBorrowed(_ sender: UIButton) {
+        overDueFlag = false
         dueStack.backgroundColor = UIColor.black
         borrowStack.backgroundColor = UIColor.blue
         tableHeading.text = "List of borrowed books"
@@ -253,22 +252,14 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
         {
             if var bookShelf = bookShelf {
                 let books = bookShelf.books.filter { book in
-                    if overDueFlag
-                    {
+                    var flag = false
                         if user.bookBorrowedArray.keys.contains(book.id) {
-                            let dueDate = commonProperty.getFormattedDateString(user.bookBorrowedArray[book.id]!)
-                            if commonProperty.getDifferenceInDaysWithCurrentDate(dueDate) < 7
-                            {
-                                return book
-                            }
-                            else{
-                                return false
-                            }
+                            if overdueFlag {
+                                let dueDate = commonProperty.getFormattedDateString(user.bookBorrowedArray[book.id]!)
+                                flag = commonProperty.getDifferenceInDaysWithCurrentDate(dueDate) < 7
+                            } else { flag = true }
                         }
-                    }
-                    else{
-                    return user.bookBorrowedArray.keys.contains(book.id)
-                    }
+                    return flag
                 }
                 bookShelf.books = books
                 booksData = bookShelf
@@ -276,20 +267,5 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
             
         }
             return booksData
-    }
-    
-    fileprivate func openAlertDialog() {
-        
-        // This class creates the alert view
-        let alert = PMAlertController(title: "Book Returned", description: "Provide signature in library for ledger entry. Else dues will be charged.", image: UIImage(named: "wecomeLogo.png"), style: .alert)
-        
-        //Add action button to alert view
-        alert.addAction(PMAlertAction(title: "OK", style: .default, action: { () in
-        
-        alert.dismiss(animated: true, completion: nil)
-            
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
     }
 }
