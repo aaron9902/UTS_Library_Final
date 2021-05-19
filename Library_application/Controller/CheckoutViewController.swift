@@ -24,7 +24,7 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         nextViewController.modalPresentationStyle = .fullScreen
         nextViewController.modalTransitionStyle = .crossDissolve
-        nextViewController.username = "13736626"//self.username
+        nextViewController.username = username //self.username
         nextViewController.bookId = selectedBookID!
         self.present(nextViewController, animated: true)
         
@@ -105,6 +105,7 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
     }
     
     @IBOutlet weak var tableViewBooks: UITableView!
+    @IBOutlet weak var headerText: UILabel!
     //var bookShelfManager = BookShelfManager()
     //var bookShelf: BookShelf? = nil
     var tableViewBooksData: BookShelf? = nil
@@ -123,6 +124,18 @@ class CheckoutViewController: UIViewController, cellCommunicateDelegate , UITabl
         }
         //bookShelf = bookShelfManager.fetchBooks()
         tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf)
+        if let bookData = tableViewBooksData{
+            if(bookData.books.count > 0)
+            {
+                headerText.text = "No Books are in cart currently"
+            }
+            else{
+                headerText.text = "Books in cart"
+            }
+        }
+        else{
+            headerText.text = "No Books are in cart currently"
+        }
         tableViewBooks.delegate = self
         tableViewBooks.dataSource = self
         let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)

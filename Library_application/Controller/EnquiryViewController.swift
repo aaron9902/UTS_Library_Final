@@ -89,6 +89,7 @@ class EnquiryViewController: UIViewController, UITextFieldDelegate, UITextViewDe
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DashboardViewController") as! DashboardViewController
             nextViewController.modalPresentationStyle = .fullScreen
             nextViewController.modalTransitionStyle = .crossDissolve
+            nextViewController.username = self.username;
             self.present(nextViewController, animated: true)
         }))
         self.present(alertVC, animated: true, completion: nil)

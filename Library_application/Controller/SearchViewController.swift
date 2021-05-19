@@ -170,50 +170,7 @@ class SearchViewController: UIViewController, cellCommunicateDelegate, UISearchB
                 cell.btnReturn.isHidden = true
             }
         }
-        
-        /*cell.lblBookTitle.text = tableViewBooksData?.books[indexPath.row].title
-        cell.lblBookAuthor.text = tableViewBooksData?.books[indexPath.row].author
-        cell.lblBookEdition.text = tableViewBooksData?.books[indexPath.row].edition
-        cell.lblPublishedYear.text = tableViewBooksData?.books[indexPath.row].year
-        cell.lblISBN.text = tableViewBooksData?.books[indexPath.row].id
-        cell.btnBorrow.isHidden = true
-        cell.btnRemove.isHidden = true
-        cell.lblDueDate.isHidden = true
-        let imageName = "\(tableViewBooksData?.books[indexPath.row].id ?? "737930").jpg"//"yourImage.png"
-        let image = UIImage(named: imageName)!
-        cell.imgViewBook.image = image
-        let selectedBookId = cell.lblISBN.text
-        let commonProperty = CommonProperty()
-        usersData = commonProperty.retrieveAndDecodeStoredUsersData()
-        if let user = usersData.first(where: {$0.userID == username})
-        {
-            let bookBorrowed = user.bookBorrowedArray[selectedBookId!] != nil
-            let bookInCart = user.bookInCartArray.contains(selectedBookId!)
-            if bookBorrowed
-            {
-                cell.lblStatus.text = "Borrowed"
-                cell.lblStatus.textColor = UIColor.red
-                let dateFormatter = DateFormatter()
-                var dateComponent = DateComponents()
-                dateComponent.day = 7
-                let dueDate = Calendar.current.date(byAdding: dateComponent, to: user.bookBorrowedArray[selectedBookId!]!)
-                dateFormatter.dateFormat = "dd/MM/YY"
-                cell.lblDueDate.isHidden = false
-                cell.btnAddToCart.isHidden = true
-                cell.lblDueDate.text = dateFormatter.string(from: dueDate!)
-                cell.lblDueDate.textColor = UIColor.systemRed
-            }
-            else if bookInCart
-            {
-                cell.lblStatus.text = "In Cart"
-                cell.lblStatus.textColor = UIColor.systemYellow
-                cell.btnAddToCart.isEnabled = false
-            }else
-            {
-                cell.lblStatus.text = "Available"
-                cell.lblStatus.textColor = UIColor.green
-            }
-        }*/
+               
         cell.delegate = self
         cell.indexPath = indexPath
         return cell

@@ -11,23 +11,50 @@ import Foundation
 import UIKit
 
 class DashboardViewController: UIViewController, cellCommunicateDelegate, UITableViewDelegate, UITableViewDataSource  {
-    func returnBookTapped(at index: IndexPath) {
-        
-    }
-    
-    
+
+    var overDueFlag = false
     
     func addToCartTapped(at index: IndexPath) {
         
     }
     
     func viewPreviewTapped(at index: IndexPath) {
+        let selectedBookID = (tableViewBooks.cellForRow(at: index) as! SearchTableViewCell).lblISBN.text
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        nextViewController.modalPresentationStyle = .fullScreen
+        nextViewController.modalTransitionStyle = .crossDissolve
+        nextViewController.username = "13736626"//self.username
+        nextViewController.bookId = selectedBookID!
+        self.present(nextViewController, animated: true)
         
     }
     
     func borrowBookTapped(at index: IndexPath) {
+        let selectedBookID = (tableViewBooks.cellForRow(at: index) as! SearchTableViewCell).lblISBN.text
+        if let user = user {
+            
+            var dayComponent = DateComponents()
+            dayComponent.day = 7
+            let dueDate = Calendar.current.date(byAdding: dayComponent, to: Date())
+            if user.bookBorrowedArray.keys.contains(selectedBookID!) { user.bookBorrowedArray[selectedBookID!] = dueDate }
+            else { user.bookBorrowedArray[selectedBookID!] = dueDate }
+  
+            if user.bookInCartArray.contains(selectedBookID!) { user.bookInCartArray.remove(at: (user.bookInCartArray as NSArray).index(of: selectedBookID!))}
+            
+            usersData.remove(at: usersData.firstIndex(where: {$0.userID == user.userID})!)
+            usersData.append(user)
+            commonProperty.encodeAndStoreUsersData(usersData: usersData)
+            
+            openDialog(title: "Book Borrowed", description: "Return within 7 days to avoid dues.", image: UIImage(named: "borrowedBook.png")!)
+        }
         
     }
+    
+    func removeFromCartTapped(at index: IndexPath) {
+        
+    }
+    
     
     @IBOutlet weak var btnDashboard: UIBarButtonItem!
     
@@ -38,8 +65,8 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
     @IBOutlet weak var tableHeading: UILabel!
     @IBOutlet weak var borrowCount: UILabel!
     @IBOutlet weak var dueCount: UILabel!
-    var bookShelfManager = BookShelfManager()
-    var bookShelf: BookShelf? = nil
+    var user: UserData? = nil
+    let commonProperty = CommonProperty()
     var tableViewBooksData: BookShelf? = nil
     var searchText: String? = nil
     var username = ""
@@ -84,25 +111,30 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
 
     }
     @IBAction func overdueClicked(_ sender: Any) {
+        overDueFlag = true
         dueStack.backgroundColor = UIColor.blue
         borrowStack.backgroundColor = UIColor.black
         tableHeading.text = "List of overdue books"
-        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchText)
+        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, overdueFlag: overDueFlag)
         tableViewBooks.reloadData()
         dueCount.text = String((tableViewBooksData?.books.count)!)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overDueFlag = false
         btnDashboard.tintColor = UIColor.init(red: 255.0/255.0, green: 35.0/255.0, blue: 5.0/255.0, alpha: 1.0)
+        if !usersData.isEmpty {
+            user = usersData.first(where: {$0.userID == username}) //username
+        }
         welcomeName.text = username
-        bookShelf = bookShelfManager.fetchBooks()
-        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchText)
+        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, overdueFlag: overDueFlag)
         tableViewBooks.delegate = self
         tableViewBooks.dataSource = self
         borrowStack.backgroundColor = UIColor.blue
         let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)
         tableViewBooks.register(nib, forCellReuseIdentifier: "SearchTableViewCell")
+        
         if (((tableViewBooksData?.books.count)) != nil)
         {
             borrowCount.text = String((tableViewBooksData?.books.count)!)
@@ -113,39 +145,36 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
         }
     }
 
-    func removeFromCartTapped(at index: IndexPath) {
-        let clickedCell = tableViewBooks.cellForRow(at: index) as! SearchTableViewCell
-        let cellStatus:String? = clickedCell.lblStatus.text!
-        let selectedBookId = clickedCell.lblISBN.text
-        let commonProperty = CommonProperty()
-        usersData = commonProperty.retrieveAndDecodeStoredUsersData()
-        if let user = usersData.first(where: {$0.userID == username})
-            {
-            let usersDataIndex = usersData.firstIndex(where: {$0.userID == username})
-            if(cellStatus == "Borrowed")
-            {
-                let keyExists = user.bookBorrowedArray[selectedBookId!] != nil
-                if keyExists
-                {
-                    user.bookBorrowedArray.removeValue(forKey: selectedBookId!)
-                    usersData.remove(at: usersDataIndex!)
-                    usersData.append(user)
-                    commonProperty.encodeAndStoreUsersData(usersData: usersData)
-                }
-            }
-            let intIndex = index.row
-            tableViewBooksData?.books.remove(at: intIndex)
-            tableViewBooks.deleteRows(at: [index], with: .fade)
-            tableViewBooks.reloadData()
-            openAlertDialog()
+    func returnBookTapped(at index: IndexPath) {
+        let selectedBookID = (tableViewBooks.cellForRow(at: index) as! SearchTableViewCell).lblISBN.text
+        if let user = user {
+            if user.bookInCartArray.contains(selectedBookID!) { user.bookInCartArray.remove(at: (user.bookInCartArray as NSArray).index(of: selectedBookID!))}
+            if user.bookBorrowedArray.keys.contains(selectedBookID!) { user.bookBorrowedArray[selectedBookID!] = nil }
+            usersData.remove(at: usersData.firstIndex(where: {$0.userID == user.userID})!)
+            usersData.append(user)
+            commonProperty.encodeAndStoreUsersData(usersData: usersData)
+            
+            openDialog(title: "Book Returned", description: "Contact librarian for confirmation.", image: UIImage(named: "wecomeLogo.png")!)
+        }
     }
+    
+    
+    fileprivate func openDialog(title: String, description: String, image: UIImage) {
+        let alert = PMAlertController(title: title, description: description, image: image, style: .alert)
+        alert.addAction(PMAlertAction(title: "OK", style: .default, action: { () in
+        
+            self.tableViewBooksData = self.getUpdatedTableViewData(bookShelf: bookShelf, overdueFlag: self.overDueFlag)
+            self.tableViewBooks.reloadData()
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
+    
         
     @IBAction func onClickBooksBorrowed(_ sender: Any) {
         dueStack.backgroundColor = UIColor.black
         borrowStack.backgroundColor = UIColor.blue
         tableHeading.text = "List of borrowed books"
-        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, searchText: searchText)
+        tableViewBooksData = getUpdatedTableViewData(bookShelf: bookShelf, overdueFlag: overDueFlag)
         tableViewBooks.reloadData()
         borrowCount.text = String((tableViewBooksData?.books.count)!)
     }
@@ -178,47 +207,37 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewBooks.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
-        cell.lblBookTitle.text = tableViewBooksData?.books[indexPath.row].title
-        cell.lblBookAuthor.text = tableViewBooksData?.books[indexPath.row].author
-        cell.lblBookEdition.text = tableViewBooksData?.books[indexPath.row].edition
-        cell.lblPublishedYear.text = tableViewBooksData?.books[indexPath.row].year
-        cell.lblISBN.text = tableViewBooksData?.books[indexPath.row].id
-        cell.btnBorrow.isHidden = true
-        cell.btnRemove.setTitle("Return", for: .normal)
-        cell.btnAddToCart.isHidden = true
-        let imageName = "\(tableViewBooksData?.books[indexPath.row].id ?? "737930").jpg"//"yourImage.png"
-        let image = UIImage(named: imageName)!
-        cell.imgViewBook.image = image
-        let selectedBookId = cell.lblISBN.text
-        let commonProperty = CommonProperty()
-        usersData = commonProperty.retrieveAndDecodeStoredUsersData()
-        if let user = usersData.first(where: {$0.userID == username})
-        {
-            let bookBorrowed = user.bookBorrowedArray[selectedBookId!] != nil
-            let bookInCart = user.bookInCartArray.contains(selectedBookId!)
-            if bookBorrowed
-            {
-                cell.lblStatus.text = "Borrowed"
-                cell.lblStatus.textColor = UIColor.red
-                let dateFormatter = DateFormatter()
-                var dateComponent = DateComponents()
-                dateComponent.day = 7
-                let dueDate = Calendar.current.date(byAdding: dateComponent, to: user.bookBorrowedArray[selectedBookId!]!)
-                dateFormatter.dateFormat = "dd/MM/YY"
+        
+        if let tableViewBooksData = tableViewBooksData, let user = user {
+            let bookId = tableViewBooksData.books[indexPath.row].id
+            cell.imgViewBook.image = UIImage(named: "\(bookId).jpg")!
+            cell.lblBookTitle.text = tableViewBooksData.books[indexPath.row].title
+            cell.lblBookAuthor.text = tableViewBooksData.books[indexPath.row].author
+            cell.lblBookEdition.text = tableViewBooksData.books[indexPath.row].edition
+            cell.lblPublishedYear.text = tableViewBooksData.books[indexPath.row].year
+            cell.lblISBN.text = bookId
+            cell.btnPreview.isHidden = false
+            if user.bookBorrowedArray.keys.contains(bookId) {
                 cell.lblDueDate.isHidden = false
-                cell.lblDueDate.text = dateFormatter.string(from: dueDate!)
-                cell.lblDueDate.textColor = UIColor.systemRed
-            }
-            else if bookInCart
-            {
-                cell.lblStatus.text = "In Cart"
-                cell.lblStatus.textColor = UIColor.systemYellow
-            }else
-            {
-                cell.lblStatus.text = "Available"
-                cell.lblStatus.textColor = UIColor.green
-            }
+                
+                let dueDate = commonProperty.getFormattedDateString(user.bookBorrowedArray[bookId]!)
+                cell.lblDueDate.text = "Due: \(dueDate)"
+                
+                if commonProperty.getDifferenceInDaysWithCurrentDate(dueDate) < 7 {
+                    cell.lblStatus.text = "Borrowed/Overdue"
+                    cell.lblStatus.textColor = UIColor.systemRed
+                } else {
+                    cell.lblStatus.text = "Borrowed"
+                    cell.lblStatus.textColor = appColor
+                }
+                
+                cell.btnAddToCart.isHidden = true
+                cell.btnBorrow.isHidden = true
+                cell.btnRemove.isHidden = true
+                cell.btnReturn.isHidden = false
+            } 
         }
+               
         cell.delegate = self
         cell.indexPath = indexPath
         return cell
@@ -228,21 +247,35 @@ class DashboardViewController: UIViewController, cellCommunicateDelegate, UITabl
         return false                            // The table view should not be editable by the user.
     }
     
-    func getUpdatedTableViewData(bookShelf: BookShelf?, searchText: String?) -> BookShelf? {
+    func getUpdatedTableViewData(bookShelf: BookShelf?, overdueFlag : Bool) -> BookShelf? {
         var booksData: BookShelf? = nil
-        let commonProperty = CommonProperty()
-        usersData = commonProperty.retrieveAndDecodeStoredUsersData()
-        if let user = usersData.first(where: {$0.userID == username})
-            {
+        if let user = user
+        {
             if var bookShelf = bookShelf {
-            let books = bookShelf.books.filter { book in
-                return user.bookBorrowedArray[book.id] != nil
+                let books = bookShelf.books.filter { book in
+                    if overDueFlag
+                    {
+                        if user.bookBorrowedArray.keys.contains(book.id) {
+                            let dueDate = commonProperty.getFormattedDateString(user.bookBorrowedArray[book.id]!)
+                            if commonProperty.getDifferenceInDaysWithCurrentDate(dueDate) < 7
+                            {
+                                return book
+                            }
+                            else{
+                                return false
+                            }
+                        }
+                    }
+                    else{
+                    return user.bookBorrowedArray.keys.contains(book.id)
+                    }
+                }
+                bookShelf.books = books
+                booksData = bookShelf
             }
-            bookShelf.books = books
-            booksData = bookShelf
-            }
+            
         }
-        return booksData
+            return booksData
     }
     
     fileprivate func openAlertDialog() {
