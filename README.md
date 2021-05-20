@@ -23,6 +23,4 @@ this login function is not connected to actual database to verify.
 
 ------------------------------------------------------------------------------------------------
 
-Presentation Slide link - https://studentutsedu.sharepoint.com/:p:/s/IOSGroupAssignments/EXOx31RCKjhKn7NtfTxk_kcB8N6PL5W--qG4D_zSyYiTSw?e=TefeH7
-
-
+Presentation Slide link - https://studentutsedu-my.sharepoint.com/:p:/g/personal/13275348_student_uts_edu_au/EfFfdYUPMcVMq8Vl443pm_QBnMfyzQVlHaJynmdlLSLs7w?e=peh18B
